@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Initialization - Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Initialization";
+    var mkdocs_page_input_path = "tasks.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../HRD_score/">HRD Score</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../git/">Git</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Yaml_files/">Yaml</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../remark_boilerplate.html">Markdown</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Conda/">Conda</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Django/">Django</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../why_django.html">Why Django?</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Docker/">Docker</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Initialization</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="initialization">Initialization</h1>
+<h2 id="0-prerequisites">0 Prerequisites</h2>
+<ul>
+<li>You need to have an elixir account to become a member of our training project at the de.NBI cloud in Berlin</li>
+<li>Your public ssh must be added at the de.NBI portal: https://cloud.denbi.de/portal/ (or at the elixir portal) to able to connect to the jumphost</li>
+</ul>
+<h2 id="1-deploy-a-vm-in-training-project">1 Deploy a vm in training project</h2>
+<ol>
+<li>Login  with elixir account at de.NBI cloud Berlin horizon dashboard (OpenStack graphical interface): https://denbi-cloud.bihealth.org/</li>
+<li>
+<p>First time users need to add their public ssh key to the horizon dashboard, to be able to inject your public key when you create a new vm:
+<em>Project --&gt; Compute --&gt; Key Pairs --&gt; Import Public Key</em></p>
+</li>
+<li>
+<p>Create a Theia virtual machine: <em>Project --&gt; Compute --&gt; Instances --&gt; Launch Instance</em></p>
+<ul>
+<li>Details: set an <strong>Instance Name with your zoomname</strong> in it</li>
+<li>Source: set <strong>Create new volume</strong> to <strong>no</strong> and choose "theia" image</li>
+<li>Flavor:  <strong>de.NBI default</strong></li>
+<li>Networks: select <strong>onlineTraining-network</strong></li>
+<li>Key pair: choose <strong>YOURKEY</strong></li>
+<li>Launch instance</li>
+</ul>
+</li>
+<li>
+<p>Assign a floating ip to get ssh access: _Project --&gt; Compute --&gt; Instances --&gt; choose your instance --&gt; assign floating vm</p>
+<ul>
+<li>Assign floating IP from range 172.16.102.x or172.16.103.x </li>
+</ul>
+<p>Please make sure you did not accidentally take a floating ip address from another ip range. They are reserved for another use case and will not work with you vm.</p>
+</li>
+</ol>
+<h2 id="2-connect-to-instance-via-ssh">2 Connect to instance via ssh</h2>
+<p>Connection to OpenStack vm at de.NBI cloud site Berlin is only possible via jumphost. Therefore you have two options:</p>
+<p><strong>A)</strong> Manually jump from your client to jumphost and from there further to your vm with <a href="https://www.ssh.com/ssh/agent">ssh-agent-forwarding</a></p>
+<ol>
+<li>
+<p>Start ssh-agent:</p>
+<p><code>bash
+eval `ssh-agent` // eval $(ssh-agent)</code></p>
+</li>
+<li>
+<p>Add ssh private key:</p>
+<p><code>bash
+ssh-add .ssh/id_rsa</code></p>
+<p>show identities:</p>
+<p><code>bash
+ssh-add -l</code></p>
+</li>
+<li>
+<p>Connect at first from your client to jumphost: </p>
+<p><code>bash
+ssh -A yourElixirUserName@denbi-jumphost-01.bihealth.org</code></p>
+<p>And from the jumphost you can connect further to the floating ip of your vm</p>
+<p><code>bash
+ssh ubuntu@yourFloatingIpOfVM</code></p>
+</li>
+</ol>
+<p><strong>B)</strong> Setup ssh-config under .ssh/config</p>
+<ul>
+<li>Windows 10:</li>
+</ul>
+<pre><code class="language-bash">Host denbi-jumphost-01.bihealth.org
+    HostName denbi-jumphost-01.bihealth.org
+    User yourElixirUserName
+    IdentityFile PATH_TO_KEY
+
+Host training_snakemake
+  HostName 172.16.XXX.XXX
+  IdentityFile PATH_TO_KEY
+  User ubuntu
+  ProxyCommand C:\Windows\System32\OpenSSH\ssh.exe denbi-jumphost-01.bihealth.org -W %h:%p
+  LocalForward 8181 localhost:8181
+</code></pre>
+<ul>
+<li>Linux:</li>
+</ul>
+<pre><code class="language-bash">Host denbi-jumphost-01.bihealth.org
+    HostName denbi-jumphost-01.bihealth.org
+    User yourElixirUserName
+    IdentityFile PATH_TO_KEY
+
+Host training_snakemake
+  HostName 172.16.XXX.XXX
+  IdentityFile PATH_TO_KEY
+  User ubuntu
+  ProxyJump denbi-jumphost-01.bihealth.org
+  LocalForward 8181 localhost:8181 # other option is to use ssh -L 8181:localhost:8181 ubuntu@training_snakemake
+</code></pre>
+<h2 id="3-setup-project">3. Setup project</h2>
+<p>Connect to instance via ssh and to Theia via browser (http://localhost:8181/#/home/ubuntu)</p>
+<ol>
+<li>Clone repository</li>
+</ol>
+<pre><code class="language-bash">cd $HOME
+git clone https://gitlab.com/twardzso/3rd_denbi_user_meeting__snakemake_cloud.git
+</code></pre>
+<ol>
+<li>Download and install conda (type: <em>empty</em>, <strong>yes</strong>, <em>empty</em>, <strong>yes</strong>)</li>
+</ol>
+<pre><code class="language-bash">wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+/bin/bash Miniconda3-latest-Linux-x86_64.sh
+source ~/.bashrc
+</code></pre>
+<ol>
+<li>Install conda environment</li>
+</ol>
+<pre><code class="language-bash">cd $HOME/3rd_denbi_user_meeting__snakemake_cloud/1_init/
+conda env create --file environment.yaml
+conda activate snakemake_training
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

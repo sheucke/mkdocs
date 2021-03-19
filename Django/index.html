@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Django - Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Django";
+    var mkdocs_page_input_path = "Django.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../HRD_score/">HRD Score</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../git/">Git</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Yaml_files/">Yaml</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../remark_boilerplate.html">Markdown</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Conda/">Conda</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Django</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1create-new-folder">1.Create new folder</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2create-a-readme-with-project-description">2.Create a Readme with project description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3use-conda-environment">3.Use Conda environment</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4create-a-git-repository">4.Create a Git repository</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5create-gitignore-file">5.Create gitignore file</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5create-a-django-project">5.Create a Django Project</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#6save-as-workspace">6.Save as Workspace</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#7create-user-for-django">7.Create User for django</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#8create-a-django-app">8.Create a django app</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#9create-database-model-in-apps-modelspy">9.Create database model in apps models.py</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#10register-the-models-for-the-admin-page-access">10.Register the models for the admin Page access</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#11-put-entries-in-the-database">11. Put entries in the database</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#12-django-views">12. Django Views</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13-get-an-item-from-the-database">13. Get an item from the database</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13-django-templates">13. Django Templates</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#14-template-inheritance">14. Template inheritance</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#15-add-data-with-django-forms">15. Add Data with Django Forms</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#16-login-and-register-users">16. Login and Register Users</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#17-automated-tests">17. Automated Tests</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#18-orders-and-inventory">18. Orders and Inventory</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../why_django.html">Why Django?</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Docker/">Docker</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Django</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="django-tutorial">Django tutorial</h1>
+<p>Open folder in WSL (VSCODE) to have working server!</p>
+<h2 id="setup">Setup</h2>
+<p>Create project with virtual environment and version control</p>
+<h3 id="1create-new-folder">1.Create new folder</h3>
+<pre><code class="language-console">mkdir project_name
+cd project_name
+</code></pre>
+<h3 id="2create-a-readme-with-project-description">2.Create a Readme with project description</h3>
+<pre><code class="language-console">touch readme.md
+</code></pre>
+<h3 id="3use-conda-environment">3.Use Conda environment</h3>
+<pre><code class="language-console">conda create -n dj
+conda activate dj
+conda install django
+</code></pre>
+<p>list all packages</p>
+<pre><code class="language-console">conda list
+</code></pre>
+<p>create an envirmonment file</p>
+<pre><code class="language-console">conda env export &gt; environment.yaml
+</code></pre>
+<h3 id="4create-a-git-repository">4.Create a Git repository</h3>
+<pre><code class="language-comsole">git init
+git add .
+git commit -m &quot;First Commit&quot;
+git git remote add origin &lt;repo name&gt;
+git push origin master
+git branch develop
+git checkout develop
+</code></pre>
+<h3 id="5create-gitignore-file">5.Create gitignore file</h3>
+<pre><code class="language-console">touch .gitignore
+</code></pre>
+<p><a href="https://www.toptal.com/developers/gitignore">https://www.toptal.com/developers/gitignore</a></p>
+<h3 id="5create-a-django-project">5.Create a Django Project</h3>
+<pre><code class="language-console">django-admin startproject dj_bootcamp .
+</code></pre>
+<h3 id="6save-as-workspace">6.Save as Workspace</h3>
+<h3 id="7create-user-for-django">7.Create User for django</h3>
+<p>Initialize database.</p>
+<pre><code class="language-console">python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
+</code></pre>
+<p><localhost:8000/admin></p>
+<h3 id="8create-a-django-app">8.Create a django app</h3>
+<pre><code class="language-console">python manage.py startapp products
+</code></pre>
+<h3 id="9create-database-model-in-apps-modelspy">9.Create database model in apps models.py</h3>
+<pre><code class="language-python">class Product(models.Model):
+    # id = models.Autofield() ; id comes automatically from django
+    title = models.CharField(max_length=200)
+    content = models.TextField(null=True, blank=True)
+    price = models.IntegerField(default=0)
+</code></pre>
+<p><a href="https://docs.djangoproject.com/en/3.1/ref/models/fields/#field-types">https://docs.djangoproject.com/en/3.1/ref/models/fields/#field-types</a></p>
+<p>In settings.py add the apps:</p>
+<pre><code class="language-python"># Application definition
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'products',
+    'profiles',
+]
+
+</code></pre>
+<p>Then use:</p>
+<pre><code class="language-console">python manage.py makemigrations
+python manage.py migrate
+</code></pre>
+<p>to create the tables in your db.sqlite3 database.</p>
+<h3 id="10register-the-models-for-the-admin-page-access">10.Register the models for the admin Page access</h3>
+<p>In the admin.py file inside the app folder add the lines:</p>
+<pre><code class="language-python"># Register your models here.
+from .models import Product
+
+admin.site.register(Product)
+</code></pre>
+<h3 id="11-put-entries-in-the-database">11. Put entries in the database</h3>
+<p>You can use the browser interface:</p>
+<p><localhost:8000/admin></p>
+<p>Or in the terminal open a django shell:</p>
+<pre><code class="language-console">python manage.py shell
+</code></pre>
+<pre><code class="language-python">from products.models import Product
+Product.objects.create(title='Raspberry Pi')
+</code></pre>
+<pre><code class="language-python">obj = Product.objects.get(id=1) # as object
+qs = Product.objects.all() # as queryset list
+for obj in qs:
+    print(obj.id)
+</code></pre>
+<pre><code class="language-python">obj = Product.objects.get(id=2)
+obj.content = &quot;some new content&quot;
+obj.save()
+exit()
+</code></pre>
+<h3 id="12-django-views">12. Django Views</h3>
+<p>Views can be function or class based and are created inside the views.py files.</p>
+<pre><code class="language-python">from django.http import HttpResponse
+from django.shortcuts import render
+
+# Create your views here.
+
+# function based views
+def home_view(request, *args, **kwargs):
+    return HttpResponse(&quot;&lt;h1&gt;Hello World&lt;/h1&gt;&quot;)
+
+# class based views
+class HomeView():
+    pass
+</code></pre>
+<p>To create a url for this view go to urls.py and import the views and create a path for them.</p>
+<pre><code class="language-python">from django.contrib import admin
+from django.urls import path
+
+from products import views
+
+urlpatterns = [
+    path('search/', views.home_view),
+    path('admin/', admin.site.urls),
+]
+</code></pre>
+<h3 id="13-get-an-item-from-the-database">13. Get an item from the database</h3>
+<p>In the views.py add an new function product_detail_view.</p>
+<pre><code class="language-python">from django.http import HttpResponse
+from django.shortcuts import render
+
+from .models import Product
+
+# Create your views here.
+
+# function based views
+
+
+def home_view(request, *args, **kwargs):
+    return HttpResponse(&quot;&lt;h1&gt;Hello World&lt;/h1&gt;&quot;)
+
+# class based views
+# class HomeView():
+#    pass
+
+
+def product_detail_view(request, *args, **kwargs):
+    obj = Product.objects.get(id=1)
+    return HttpResponse(f&quot;Product id {obj.id}&quot;)
+</code></pre>
+<p>Then add the url path to urls.py.</p>
+<pre><code class="language-python">from django.contrib import admin
+from django.urls import path
+
+from products import views
+
+urlpatterns = [
+    path('search/', views.home_view),
+    path('products/1/', views.product_detail_view),
+    path('admin/', admin.site.urls),
+]
+</code></pre>
+<p>To make the urls dynamic change the view function and urls path.</p>
+<pre><code class="language-python">def product_detail_view(request, pk):
+    obj = Product.objects.get(pk=pk)
+    return HttpResponse(f&quot;Product id {obj.id}&quot;)
+</code></pre>
+<pre><code class="language-python">urlpatterns = [
+    path('search/', views.home_view),
+    path('products/&lt;int:pk&gt;/', views.product_detail_view),
+    path('admin/', admin.site.urls),
+]
+</code></pre>
+<p>To handle errors with not existing database items.</p>
+<pre><code class="language-python">def product_detail_view(request, pk):
+    try:
+        obj = Product.objects.get(pk=pk)
+    except Product.DoesNotExist:
+        raise Http404
+    return HttpResponse(f&quot;Product id {obj.id}&quot;)
+</code></pre>
+<p>Different way to import views to urls.py</p>
+<pre><code class="language-python">from django.contrib import admin
+from django.urls import path
+
+from products.views import home_view, product_detail_view
+
+urlpatterns = [
+    path('search/', home_view),
+    path('products/&lt;int:pk&gt;/', product_detail_view),
+    path('admin/', admin.site.urls),
+]
+</code></pre>
+<h3 id="13-django-templates">13. Django Templates</h3>
+<p>Create a folder named templates in the root directory of the project. In the new folder create an html file called home.html.</p>
+<pre><code class="language-html">&lt;h1&gt;Hello, {{ name }}!&lt;/h1&gt;
+</code></pre>
+<p>In settings.py add the templates folder to the 'DIRS' list.</p>
+<pre><code class="language-python">TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / &quot;templates&quot;],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+</code></pre>
+<p>In the views.py change the home_view.</p>
+<pre><code class="language-python">def home_view(request, *args, **kwargs):
+    # return HttpResponse(&quot;&lt;h1&gt;Hello World&lt;/h1&gt;&quot;)
+    context = {&quot;name&quot;: &quot;Sebastian&quot;}
+    return render(request, &quot;home.html&quot;, context)
+</code></pre>
+<h3 id="14-template-inheritance">14. Template inheritance</h3>
+<p>This is used to inherit a base.html to all other webpages of the app.</p>
+<p>Create a base.html file in the templates folder.</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;Home Page&lt;/title&gt;
+    &lt;style&gt;
+      h1 {
+        color: red;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    {% block content %} {% endblock %}
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Then change your home.html.</p>
+<pre><code class="language-html">{% extends &quot;base.html&quot; %} {% block content %}
+&lt;h1&gt;Hello, {{ name }}!&lt;/h1&gt;
+{% endblock %}
+</code></pre>
+<p>Example for some database information.</p>
+<pre><code class="language-python">def product_detail_view(request, pk):
+    try:
+        obj = Product.objects.get(pk=pk)
+    except Product.DoesNotExist:
+        raise Http404
+    return render(request, &quot;products/detail.html&quot;, {&quot;object&quot;: obj})
+</code></pre>
+<pre><code class="language-html">{% extends &quot;base.html&quot; %} {% block content %}
+&lt;h1&gt;{{ object.title }}&lt;/h1&gt;
+
+{% if object.content %}
+&lt;p&gt;{{ object.content }}&lt;/p&gt;
+{% else %}
+&lt;p&gt;Content soon.&lt;/p&gt;
+{% endif %} {% endblock %}
+</code></pre>
+<h3 id="15-add-data-with-django-forms">15. Add Data with Django Forms</h3>
+<p>Have a user send data.</p>
+<p>HTTP Methods: GET, POST, PUT, DELETE
+CRUD: Create, Retrieve, Update, Destroy database items</p>
+<p>Every request can have HTTP Methods.</p>
+<pre><code class="language-python">def any_view(request, *args, **kwargs):
+    print(request.POST)
+    print(request.GET)
+    print(request.method == &quot;POST&quot;)
+    print(request.method == &quot;GET&quot;)
+    return render(request, 'any_view.html', {})
+</code></pre>
+<p>Create a function in views.py.</p>
+<pre><code class="language-python">def product_create_view(request, *args, **kwargs):
+    print(request.POST)
+    print(request.GET)
+    return render(request, &quot;products/forms.html&quot;, {})
+</code></pre>
+<p>Then create the forms.html file. Dont forget the CSRF (Cross site reference forgery token). Django provides this as middleware in the settings.py.</p>
+<pre><code class="language-html">{% extends &quot;base.html&quot; %} {% block content %}
+
+&lt;form method=&quot;POST&quot; action=&quot;.&quot;&gt;
+  {% csrf_token %}
+  &lt;input type=&quot;text&quot; name=&quot;something&quot; /&gt;
+  &lt;button type=&quot;submit&quot;&gt;Send data&lt;/button&gt;
+&lt;/form&gt;
+
+{% endblock %}
+</code></pre>
+<p>And then register that html file in the urls.py file as a path.</p>
+<pre><code class="language-python">from products.views import home_view, product_detail_view, product_list_view, product_create_view
+
+urlpatterns = [
+    path('search/', home_view),
+    path('products/&lt;int:pk&gt;/', product_detail_view),
+    path('products/', product_list_view),
+    path('products/create/', product_create_view),
+    path('admin/', admin.site.urls),
+]
+</code></pre>
+<p>Create Forms the Django way. First create a forms.py file in the app.</p>
+<pre><code class="language-python">from django import forms
+
+
+class ProductForm(forms.Form):
+    title = forms.CharField()
+</code></pre>
+<p>Change the forms.html.</p>
+<pre><code class="language-html">{% extends &quot;base.html&quot; %} {% block content %}
+
+&lt;form method=&quot;POST&quot; action=&quot;.&quot;&gt;
+  {% csrf_token %}
+  &lt;input type=&quot;text&quot; name=&quot;title&quot; /&gt;
+  &lt;button type=&quot;submit&quot;&gt;Send data&lt;/button&gt;
+&lt;/form&gt;
+
+{% endblock %}
+</code></pre>
+<p>And change the funtion in the views.py.</p>
+<pre><code class="language-python">def product_create_view(request, *args, **kwargs):
+    if request.method == &quot;POST&quot;:
+        post_data = request.POST or None
+        if post_data != None:
+            my_form = ProductForm(request.POST)
+            if my_form.is_valid():
+                print(my_form.cleaned_data.get(&quot;title&quot;))
+                title_from_input = my_form.cleaned_data.get(&quot;title&quot;)
+                Product.objects.create(title=title_from_input)
+
+    return render(request, &quot;products/forms.html&quot;, {})
+</code></pre>
+<p>And again to make it better change the following.</p>
+<pre><code class="language-python">def product_create_view(request, *args, **kwargs):
+    form = ProductForm(request.POST or None)
+    if form.is_valid():
+        data = form.cleaned_data
+        Product.objects.create(**data)
+        form = ProductForm() # reinitialize
+    return render(request, &quot;products/forms.html&quot;, {&quot;form&quot;: form})
+</code></pre>
+<p>And then in the forms.html</p>
+<pre><code class="language-html">{% extends &quot;base.html&quot; %} {% block content %}
+
+&lt;form method=&quot;POST&quot; action=&quot;.&quot;&gt;
+  {% csrf_token %} {{ form.as_p }}
+  &lt;button type=&quot;submit&quot;&gt;Send data&lt;/button&gt;
+&lt;/form&gt;
+
+{% endblock %}
+</code></pre>
+<p>And yet again another way with ModelForms.</p>
+<pre><code class="language-python">from django import forms
+from .models import Product
+
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = [
+            'title',
+            'content'
+        ]
+
+    def clean_title(self):
+        data = self.cleaned_data.get('title')
+        if len(data) &lt; 4:
+            raise forms.ValidationError(&quot;This is not long enough&quot;)
+        return data
+</code></pre>
+<pre><code class="language-python">def product_create_view(request, *args, **kwargs):
+    form = ProductForm(request.POST or None)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.save()
+        form = ProductForm()
+    return render(request, &quot;products/forms.html&quot;, {&quot;form&quot;: form})
+</code></pre>
+<h3 id="16-login-and-register-users">16. Login and Register Users</h3>
+<p>In django shell you can get all the unique users by:</p>
+<pre><code class="language-python">from django.contrib.auth import get_user_model
+User = get_user_model()
+User.objects.all()
+
+User.objects.create(username='sebastian', email='sebastian@gmail.com)
+
+# or
+User.objects.create_user(&quot;sebastian&quot;, &quot;sebastian@gmail.com&quot;, &quot;password&quot;)
+user = User.objects.get(username=&quot;sebastian&quot;)
+user.set_password(&quot;123456&quot;)
+user.save()
+</code></pre>
+<p>Create a new app called accounts for the users. And inside the accounts a forms.py file.</p>
+<pre><code class="language-python">from django.contrib.auth import get_user_model
+from django import forms
+
+User = get_user_model()
+non_allowed_usernames = ['abc']
+
+
+class RegisterForm(forms.Form):
+    username = forms.CharField()
+    email = forms.EmailField()
+    password1 = forms.CharField(
+        label='Password',
+        widget=forms.PasswordInput(
+            attrs={&quot;class&quot;: &quot;form-control&quot;,
+                   &quot;id&quot;: &quot;user-password&quot;}
+        )
+    )
+    password2 = forms.CharField(
+        label='Confirm Password',
+        widget=forms.PasswordInput(
+            attrs={&quot;class&quot;: &quot;form-control&quot;,
+                   &quot;id&quot;: &quot;user-confirm-password&quot;}
+        )
+    )
+
+    def clean_username(self):
+        username = self.cleaned_data.get(&quot;username&quot;)
+        qs = User.objects.filter(username__iexact=username)
+        if username in non_allowed_usernames:
+            raise forms.ValidationError(
+                &quot;This is an invalid username, please pick another.&quot;)
+        if not qs.exists():
+            raise forms.ValidationError(
+                &quot;This is an invalid username, please pick another.&quot;)
+        return username
+
+    def clean_email(self):
+        email = self.cleaned_data.get(&quot;email&quot;)
+        qs = User.objects.filter(username__iexact=email)
+        if not qs.exists():
+            raise forms.ValidationError(&quot;This email is already in use.&quot;)
+        return email
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={&quot;class&quot;: &quot;form-control&quot;,
+                   &quot;id&quot;: &quot;user-password&quot;}
+        )
+    )
+
+    def clean_username(self):
+        username = self.cleaned_data.get(&quot;username&quot;)
+        qs = User.objects.filter(username__iexact=username)
+        if not qs.exists():
+            raise forms.ValidationError(&quot;This is an invalid user.&quot;)
+        return usernam
+</code></pre>
+<p>In the views.py of the accounts app.</p>
+<pre><code class="language-python">from django.contrib.auth import authenticate, login, logout, get_user_model
+from django.shortcuts import redirect, render
+
+from .forms import LoginForm, RegisterForm
+
+# Create your views here.
+
+User = get_user_model()
+
+
+def register_view(request):
+    form = RegisterForm(request.POST or None)
+    if form.is_valid():
+        username = form.cleaned_data.get(&quot;username&quot;)
+        email = form.cleaned_data.get(&quot;email&quot;)
+        password = form.cleaned_data.get(&quot;password1&quot;)
+        password2 = form.cleaned_data.get(&quot;password2&quot;)
+        try:
+            user = User.objects.create_user(username, email, password)
+        except:
+            user = None
+
+        if user != None:
+            login(request, user)
+            return redirect(&quot;/&quot;)
+        else:
+            # attempt = request.session.get(&quot;attempt&quot;) or 0
+            # request.session['attempt'] = attempt + 1
+            request.session[&quot;register_error&quot;] = 1  # True
+
+    return render(request, &quot;forms.html&quot;, {&quot;form&quot;: form})
+
+
+def login_view(request):
+    form = LoginForm(request.POST or None)
+    if form.is_valid():
+        username = form.cleaned_data.get(&quot;username&quot;)
+        password = form.cleaned_data.get(&quot;password&quot;)
+        user = authenticate(request, username=username, password=password)
+        if user != None:
+            login(request, user)
+            return redirect(&quot;/&quot;)
+        else:
+            # attempt = request.session.get(&quot;attempt&quot;) or 0
+            # request.session['attempt'] = attempt + 1
+            request.session[&quot;invalid_user&quot;] = 1  # True
+
+    return render(request, &quot;forms.html&quot;, {&quot;form&quot;: form})
+
+
+def logout_view(request):
+    logout(request)
+    return redirect(&quot;/login&quot;)
+</code></pre>
+<p>Create a path in the urls.py</p>
+<pre><code class="language-python">urlpatterns = [
+    path('search/', home_view),
+    path('products/&lt;int:pk&gt;/', product_detail_view),
+    path('products/', product_list_view),
+    path('products/create/', product_create_view),
+    path('admin/', admin.site.urls),
+    path('login/', login_view),
+    path('logout/', logout_view),
+    path('register/', register_view),
+]
+</code></pre>
+<p>And in the settings.py file add the lines.</p>
+<pre><code class="language-python">LOGIN_URL = &quot;/login&quot;
+LOGIN_REDIRECT_URL = &quot;/&quot;
+</code></pre>
+<h3 id="17-automated-tests">17. Automated Tests</h3>
+<p>When projects grow, automated tests (also known as unit tests) are very important to ensure that the app is working with little to no bugs.</p>
+<pre><code class="language-python">from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.http import response
+from django.shortcuts import redirect
+from django.test import TestCase
+
+# Create your tests here.
+
+User = get_user_model()
+
+
+class UserTestCase(TestCase):
+
+    def setUp(self):  # Python builtin unittest
+        user_a = User(username='sebastian', email='sebastian@gmail.com')
+        user_a_pw = 'some_123_password'
+        self.user_a_pw = user_a_pw
+        user_a.is_staff = True
+        user_a.is_superuser = True
+        user_a.set_password(user_a_pw)
+        user_a.save()
+        print(user_a.id)
+        self.user_a = user_a
+
+    def test_user_exists(self):
+        user_count = User.objects.all().count()
+        self.assertEqual(user_count, 1)
+        self.assertNotEqual(user_count, 0)
+
+    def test_user_password(self):
+        user_a = User.objects.get(username=&quot;sebastian&quot;)
+        self.assertTrue(self.user_a.check_password(self.user_a_pw))
+
+    def test_login_url(self):
+        login_url = settings.LOGIN_URL
+        # response = self.client.post(url, {}, follow=True)
+        data = {&quot;username&quot;: &quot;sebastian&quot;, &quot;password&quot;: &quot;some_123_password&quot;}
+        response = self.client.post(login_url, data, follow=True)
+        print(dir(response))
+        status_code = response.status_code
+        redirect_path = response.request.get(&quot;PATH_INFO&quot;)
+        self.assertEqual(redirect_path, settings.LOGIN_URL)
+        self.assertEqual(status_code, 200)
+</code></pre>
+<h3 id="18-orders-and-inventory">18. Orders and Inventory</h3>
+<p>In models.py of the products app add an inventory column</p>
+<pre><code class="language-python">from django.conf import settings
+from django.db import models
+
+# Create your models here.
+
+User = settings.AUTH_USER_MODEL
+
+
+class Product(models.Model):
+    # id = models.Autofield() ; id comes automatically from django
+    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    title = models.CharField(max_length=200)
+    content = models.TextField(null=True, blank=True)
+    price = models.DecimalField(
+        max_digits=10, decimal_places=2, default=0.00)  # 0.99
+    inventory = models.IntegerField(default=0)
+
+    def has_inventory(self):
+        return self.inventory &gt; 0  # True or False
+</code></pre>
+<p>And for the orders create a new app orders and add it to the seetings.py. Then create the database table columns in the models.py.</p>
+<pre><code class="language-python">from django.contrib.auth import get_user_model
+from django.db import models
+
+from products.models import Product
+
+
+# Create your models here.
+User = get_user_model()
+
+ORDER_STATUS_CHOICES = (
+    ('created', 'Created'),
+    ('stale', 'Stale'),
+    ('paid', 'Paid'),
+    ('shipped', 'Shipped'),
+    ('refunded', 'Refunded'),
+
+)
+
+
+class Order(models.Model):
+    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    product = models.ForeignKey(Product, null=True, on_delete=models.SET_NULL)
+    status = models.CharField(
+        max_length=20, choices=ORDER_STATUS_CHOICES, default='created')
+    subtotal = models.DecimalField(
+        max_digits=10, decimal_places=2, default=0.00)
+    tax = models.DecimalField(
+        max_digits=10, decimal_places=2, default=0.00)
+    total = models.DecimalField(
+        max_digits=10, decimal_places=2, default=0.00)
+    paid = models.DecimalField(
+        max_digits=10, decimal_places=2, default=0.00)
+    shipping_adress = models.TextField(blank=True, null=True)
+    billing_adress = models.TextField(blank=True, null=True)
+    # automatically datatime object
+    timestamp = models.DateTimeField(auto_now_add=True)
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../why_django.html" class="btn btn-neutral float-right" title="Why Django?">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Conda/" class="btn btn-neutral" title="Conda"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../Conda/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../why_django.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Git - Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Git";
+    var mkdocs_page_input_path = "git.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../HRD_score/">HRD Score</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Git</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#benefits-of-version-control">Benefits of Version Control</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#git-at-a-glance">Git at a glance</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#git-commands">git commands</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#git-concepts">Git concepts</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#commit">commit</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#repository">repository</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#git-settings">Git settings</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#setting-your-identity">Setting your identity</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#a-typical-git-workflow">A typical git workflow</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#creating-snapshots">Creating Snapshots</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#initializing-a-repository">Initializing a repository</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#staging-files">Staging files</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#viewing-the-status">Viewing the status</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#committing-the-staged-files">Committing the staged files</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#skipping-the-staging-area">Skipping the staging area</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#removing-files">Removing files</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#renaming-or-moving-files">Renaming or moving files</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#viewing-the-stagedunstaged-changes">Viewing the staged/unstaged changes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#viewing-the-history">Viewing the history</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#viewing-a-commit">Viewing a commit</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#unstaging-files-undoing-git-add">Unstaging files (undoing git add)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#discarding-local-changes">Discarding local changes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#restoring-an-earlier-version-of-a-file">Restoring an earlier version of a file</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#browsing-history">Browsing History</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#filtering-the-history">Filtering the history</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#formatting-the-log-output">Formatting the log output</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#creating-an-alias">Creating an alias</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#view-a-commit">View a commit</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#comparing-commits">Comparing commits</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#checking-out-a-commit">Checking out a commit</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#finding-a-bad-commit">Finding a bad commit</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#finding-contributors">Finding contributors</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#viewing-the-history-of-a-file">Viewing the history of a file</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#finding-the-author-of-lines">Finding the author of lines</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tagging">Tagging</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#branching-merging">Branching &amp; Merging</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#managing-branches">Managing branches</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#comparing-branches">Comparing branches</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#stashing">Stashing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#merging">Merging</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#viewing-the-merged-branches">Viewing the merged branches</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rebasing">Rebasing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cherry-picking">Cherry picking</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#collaboration">Collaboration</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#cloning-a-repository">Cloning a repository</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#syncing-with-remotes">Syncing with remotes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sharing-tags">Sharing tags</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sharing-branches">Sharing branches</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#managing-remotes">Managing remotes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rewriting-history">Rewriting History</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#undoing-commits">Undoing commits</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#reverting-commits">Reverting commits</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#recovering-lost-commits">Recovering lost commits</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#amending-the-last-commit">Amending the last commit</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#interactive-rebasing">Interactive rebasing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#gitignore-example">.gitignore example</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Yaml_files/">Yaml</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../remark_boilerplate.html">Markdown</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Conda/">Conda</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Django/">Django</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../why_django.html">Why Django?</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Docker/">Docker</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Git</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="git">GIT</h1>
+<h2 id="benefits-of-version-control">Benefits of Version Control</h2>
+<p>Version control is a system that records changes to a file or set of files over time so that you can recall specific versions later.</p>
+<ul>
+<li>
+<p><strong>Track incremental backups and recover:</strong> Every document can be backed up automatically and restored at a second's notice.</p>
+</li>
+<li>
+<p><strong>Track every change:</strong> Every infinitesimal change can be recorded and can be used to revert a file to an earlier state.</p>
+</li>
+<li>
+<p><strong>Track writing experiments:</strong> Writing experiments can be sandboxed to copies while keeping the main file intact.</p>
+</li>
+<li>
+<p><strong>Track co-authoring and collaboration:</strong> Teams can work independendtly on their own files, nut merge them into a latest common revision.</p>
+</li>
+<li>
+<p><strong>Track individual contributions:</strong> Good VCS system tag changes with authors who make them.</p>
+</li>
+</ul>
+<h2 id="git-at-a-glance">Git at a glance</h2>
+<h3 id="git-commands">git commands</h3>
+<p>The git tool has many subcommands that can be invoked like <em>git subcommand</em> for instance <em>git status</em> to get the status of a repository.</p>
+<p>The most important ones are:</p>
+<p><strong>init</strong>: initialize a repository
+<strong>clone</strong>: clone a repository
+<strong>status</strong>: get information about a repository
+<strong>log</strong>: view the history and commit messages of the repository
+<strong>add</strong>: add a file to the staging area
+<strong>commit</strong>: commit your changes to your <strong>local</strong> repository
+<strong>push</strong>: push changes to a <strong>remote</strong> repository
+<strong>pull</strong>: pull changes from a <strong>remote</strong> repository
+<strong>checkout</strong>: retrieve a specific version of a file</p>
+<p>you can read more about each command by invoking the help:</p>
+<pre><code class="language-bash">git commit --help
+git help commit
+</code></pre>
+<h2 id="git-concepts">Git concepts</h2>
+<h3 id="commit">commit</h3>
+<p>A commit is a recorded set of changes in your projects file's. Try to group <em>logical</em> sets of changes together into one commit - don't mix changes which are unreleated.</p>
+<h3 id="repository">repository</h3>
+<p>A repository is the history of all your project's commits.</p>
+<h2 id="git-settings">Git settings</h2>
+<h3 id="setting-your-identity">Setting your identity</h3>
+<p>Before we start, we should set the user name and e-email address. This is important because every git commit uses this information and it's also incredibly useful when looking at the history and commit log:</p>
+<pre><code class="language-bash">git config --global user.name &quot;Sebastian Heucke&quot;
+git config --global user.email &quot;sebastian.heucke@med.uni-muenchen.de&quot;
+
+
+git config --global core.editor nano
+git config --global color.ui auto
+git config --global merge.tool kdiff3
+</code></pre>
+<h2 id="a-typical-git-workflow">A typical git workflow</h2>
+<p><img alt="workflow" src="../images/git_workflow.png" />
+<img alt="gitworkflow" src="/images/gitworkflow1.png" /></p>
+<h2 id="creating-snapshots">Creating Snapshots</h2>
+<h3 id="initializing-a-repository">Initializing a repository</h3>
+<pre><code class="language-bash">git init
+</code></pre>
+<h3 id="staging-files">Staging files</h3>
+<pre><code class="language-bash">git add file1.js # Stages a single file
+git add file1.js file2.js # Stages multiple files
+git add \*.js # Stages with a pattern
+git add . # Stages the current directory and all its content
+</code></pre>
+<h3 id="viewing-the-status">Viewing the status</h3>
+<pre><code class="language-bash">git status # Full status
+git status -s # Short status
+</code></pre>
+<h3 id="committing-the-staged-files">Committing the staged files</h3>
+<pre><code class="language-bash">git commit -m “Message” # Commits with a one-line message
+git commit # Opens the default editor to type a long message
+</code></pre>
+<h3 id="skipping-the-staging-area">Skipping the staging area</h3>
+<pre><code class="language-bash">git commit -am “Message”
+</code></pre>
+<h3 id="removing-files">Removing files</h3>
+<pre><code class="language-bash">git rm file1.js # Removes from working directory and staging area
+git rm --cached file1.js # Removes from staging area only
+</code></pre>
+<h3 id="renaming-or-moving-files">Renaming or moving files</h3>
+<pre><code class="language-bash">git mv file1.js file1.txt
+</code></pre>
+<h3 id="viewing-the-stagedunstaged-changes">Viewing the staged/unstaged changes</h3>
+<pre><code class="language-bash">git diff # Shows unstaged changes
+git diff --staged # Shows staged changes
+git diff --cached # Same as the above
+</code></pre>
+<h3 id="viewing-the-history">Viewing the history</h3>
+<pre><code class="language-bash">git log # Full history
+git log --oneline # Summary
+git log --reverse # Lists the commits from the oldest to the newest
+</code></pre>
+<h3 id="viewing-a-commit">Viewing a commit</h3>
+<pre><code class="language-bash">git show 921a2ff # Shows the given commit
+git show HEAD # Shows the last commit
+git show HEAD~2 # Two steps before the last commit
+git show HEAD:file.js # Shows the version of file.js stored in the last commit
+</code></pre>
+<h3 id="unstaging-files-undoing-git-add">Unstaging files (undoing git add)</h3>
+<pre><code class="language-bash">git restore --staged file.js # Copies the last version of file.js from repo to index
+</code></pre>
+<h3 id="discarding-local-changes">Discarding local changes</h3>
+<pre><code class="language-bash">git restore file.js # Copies file.js from index to working directory
+git restore file1.js file2.js # Restores multiple files in working directory
+git restore . # Discards all local changes (except untracked files)
+git clean -fd # Removes all untracked files
+</code></pre>
+<h3 id="restoring-an-earlier-version-of-a-file">Restoring an earlier version of a file</h3>
+<pre><code class="language-bash">git restore --source=HEAD~2 file.js
+</code></pre>
+<h2 id="browsing-history">Browsing History</h2>
+<pre><code class="language-bash">git log --stat # Shows the list of modified files
+git log --patch # Shows the actual changes (patches)
+</code></pre>
+<h3 id="filtering-the-history">Filtering the history</h3>
+<pre><code class="language-bash">git log -3 # Shows the last 3 entries
+git log --author=“Mosh”
+git log --before=“2020-08-17”
+git log --after=“one week ago”
+git log --grep=“GUI” # Commits with “GUI” in their message
+git log -S“GUI” # Commits with “GUI” in their patches
+git log hash1..hash2 # Range of commits
+git log file.txt # Commits that touched file.txt
+</code></pre>
+<h3 id="formatting-the-log-output">Formatting the log output</h3>
+<pre><code class="language-bash">git log --pretty=format:”%an committed %H”
+</code></pre>
+<h3 id="creating-an-alias">Creating an alias</h3>
+<pre><code class="language-bash">git config --global alias.lg “log --oneline&quot;
+</code></pre>
+<h3 id="view-a-commit">View a commit</h3>
+<pre><code class="language-bash">git show HEAD~2
+git show HEAD~2:file1.txt # Shows the version of file stored in this commit
+</code></pre>
+<h3 id="comparing-commits">Comparing commits</h3>
+<pre><code class="language-bash">git diff HEAD~2 HEAD # Shows the changes between two commits
+git diff HEAD~2 HEAD file.txt # Changes to file.txt only
+</code></pre>
+<h3 id="checking-out-a-commit">Checking out a commit</h3>
+<pre><code class="language-bash">git checkout dad47ed # Checks out the given commit
+git checkout master # Checks out the master branch
+</code></pre>
+<h3 id="finding-a-bad-commit">Finding a bad commit</h3>
+<pre><code class="language-bash">git bisect start
+git bisect bad # Marks the current commit as a bad commit
+git bisect good ca49180 # Marks the given commit as a good commit
+git bisect reset # Terminates the bisect session
+</code></pre>
+<h3 id="finding-contributors">Finding contributors</h3>
+<pre><code class="language-bash">git shortlog
+</code></pre>
+<h3 id="viewing-the-history-of-a-file">Viewing the history of a file</h3>
+<pre><code class="language-bash">git log file.txt # Shows the commits that touched file.txt
+git log --stat file.txt # Shows statistics (the number of changes) for file.txt
+git log --patch file.txt # Shows the patches (changes) applied to file.txt
+</code></pre>
+<h3 id="finding-the-author-of-lines">Finding the author of lines</h3>
+<pre><code class="language-bash">git blame file.txt # Shows the author of each line in file.txt
+</code></pre>
+<h3 id="tagging">Tagging</h3>
+<pre><code class="language-bash">git tag v1.0 # Tags the last commit as v1.0
+git tag v1.0 5e7a828 # Tags an earlier commit
+git tag # Lists all the tags
+git tag -d v1.0 # Deletes the given tag
+</code></pre>
+<h2 id="branching-merging">Branching &amp; Merging</h2>
+<h3 id="managing-branches">Managing branches</h3>
+<pre><code class="language-bash">git branch bugfix # Creates a new branch called bugfix
+git checkout bugfix # Switches to the bugfix branch
+git switch bugfix # Same as the above
+git switch -C bugfix # Creates and switches
+git branch -d bugfix # Deletes the bugfix branch
+</code></pre>
+<h3 id="comparing-branches">Comparing branches</h3>
+<pre><code class="language-bash">git log master..bugfix # Lists the commits in the bugfix branch not in master
+git diff master..bugfix # Shows the summary of changes
+</code></pre>
+<h3 id="stashing">Stashing</h3>
+<pre><code class="language-bash">git stash push -m “New tax rules” # Creates a new stash
+git stash list # Lists all the stashes
+git stash show stash@{1} # Shows the given stash
+git stash show 1 # shortcut for stash@{1}
+git stash apply 1 # Applies the given stash to the working dir
+git stash drop 1 # Deletes the given stash
+git stash clear # Deletes all the stashes
+</code></pre>
+<h3 id="merging">Merging</h3>
+<pre><code class="language-bash">git merge bugfix # Merges the bugfix branch into the current branch
+git merge --no-ff bugfix # Creates a merge commit even if FF is possible
+git merge --squash bugfix # Performs a squash merge
+git merge --abort # Aborts the merge
+</code></pre>
+<h3 id="viewing-the-merged-branches">Viewing the merged branches</h3>
+<pre><code class="language-bash">git branch --merged # Shows the merged branches
+git branch --no-merged # Shows the unmerged branches
+</code></pre>
+<h3 id="rebasing">Rebasing</h3>
+<pre><code class="language-bash">git rebase master # Changes the base of the current branch
+</code></pre>
+<h3 id="cherry-picking">Cherry picking</h3>
+<pre><code class="language-bash">git cherry-pick dad47ed # Applies the given commit on the current branch
+</code></pre>
+<h2 id="collaboration">Collaboration</h2>
+<h3 id="cloning-a-repository">Cloning a repository</h3>
+<pre><code class="language-bash">git clone url
+</code></pre>
+<h3 id="syncing-with-remotes">Syncing with remotes</h3>
+<pre><code class="language-bash">git fetch origin master # Fetches master from origin
+git fetch origin # Fetches all objects from origin
+git fetch # Shortcut for “git fetch origin”
+git pull # Fetch + merge
+git push origin master # Pushes master to origin
+git push # Shortcut for “git push origin master”
+</code></pre>
+<h3 id="sharing-tags">Sharing tags</h3>
+<pre><code class="language-bash">git push origin v1.0 # Pushes tag v1.0 to origin
+git push origin —delete v1.0
+</code></pre>
+<h3 id="sharing-branches">Sharing branches</h3>
+<pre><code class="language-bash">git branch -r # Shows remote tracking branches
+git branch -vv # Shows local &amp; remote tracking branches
+git push -u origin bugfix # Pushes bugfix to origin
+git push -d origin bugfix # Removes bugfix from origin
+</code></pre>
+<h3 id="managing-remotes">Managing remotes</h3>
+<pre><code class="language-bash">git remote # Shows remote repos
+git remote add upstream url # Adds a new remote called upstream
+git remote rm upstream # Remotes upstream
+</code></pre>
+<h2 id="rewriting-history">Rewriting History</h2>
+<h3 id="undoing-commits">Undoing commits</h3>
+<pre><code class="language-bash">git reset --soft HEAD^ # Removes the last commit, keeps changed staged
+git reset --mixed HEAD^ # Unstages the changes as well
+git reset --hard HEAD^ # Discards local changes
+</code></pre>
+<h3 id="reverting-commits">Reverting commits</h3>
+<pre><code class="language-bash">git revert 72856ea # Reverts the given commit
+git revert HEAD~3.. # Reverts the last three commits
+git revert --no-commit HEAD~3..
+</code></pre>
+<h3 id="recovering-lost-commits">Recovering lost commits</h3>
+<pre><code class="language-bash">git reflog # Shows the history of HEAD
+git reflog show bugfix # Shows the history of bugfix pointer
+</code></pre>
+<h3 id="amending-the-last-commit">Amending the last commit</h3>
+<pre><code class="language-bash">git commit --amend
+</code></pre>
+<h3 id="interactive-rebasing">Interactive rebasing</h3>
+<pre><code class="language-bash">git rebase -i HEAD~5
+</code></pre>
+<h3 id="gitignore-example">.gitignore example</h3>
+<p><a href="https://www.gitignore.io/">https://www.gitignore.io/</a></p>
+<pre><code class="language-python"># Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+#   For a library or package, you might want to ignore these files since the code is
+#   intended to run in multiple environments; otherwise, check them in:
+# .python-version
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Yaml_files/" class="btn btn-neutral float-right" title="Yaml">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../HRD_score/" class="btn btn-neutral" title="HRD Score"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../HRD_score/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Yaml_files/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

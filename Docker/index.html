@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Docker - Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Docker";
+    var mkdocs_page_input_path = "Docker.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../HRD_score/">HRD Score</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../git/">Git</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Yaml_files/">Yaml</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../remark_boilerplate.html">Markdown</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Conda/">Conda</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Django/">Django</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../why_django.html">Why Django?</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Docker</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installing-docker">Installing docker</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#why-use-docker">Why use docker?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#basic-container-startup">Basic container startup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#finding-usefull-docker-images">Finding usefull docker images</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#basic-docker-uses">Basic docker uses</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#managing-docker-containers">Managing docker containers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#making-and-building-images">Making and building images</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pushing-to-docker-hub">Pushing to docker hub</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#docker-tutorial">Docker tutorial</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#images-containers-ports">Images, Containers, Ports</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#volumes">Volumes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#building-images">Building Images</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dockerignore">.dockerignore</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#reducing-image-size">Reducing image size</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tags-and-versioning">Tags and versioning</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#docker-registries">Docker Registries</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#debugging-containers">Debugging Containers</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#docker-compose">Docker Compose</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#anatomy-of-dockerfile">Anatomy of Dockerfile</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Docker</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="using-docker-in-research">Using docker in research</h1>
+<h2 id="installing-docker">Installing docker</h2>
+<p>For Ubuntu follow instructions:
+<a href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a></p>
+<p>In this repo there is a script for Ubuntu install, but I suggest you use official installation guidelines.
+<a href="https://docs.docker.com/engine/install/linux-postinstall/">There are also some postinstall steps to make it nicer to run (for example, running without sudo)</a></p>
+<p>For Windows, there is "Docker Desktop" instalation of which is explained here:
+<a href="https://docs.docker.com/docker-for-windows/install/">https://docs.docker.com/docker-for-windows/install/</a></p>
+<p>The docker is best used from a linux system and I will assume that you have one.</p>
+<h2 id="why-use-docker">Why use docker?</h2>
+<p>The idea of docker containers may seem unintuitive to researchers or scientists.
+What is the point of all these additional steps, starting programs through some strange commands
+when all that it does is quite similar to a normal computer setup?</p>
+<p>But that is the whole point -- you wrap up your whole setup in a nice, thin way so that you can use it
+but so can other people. Also you from the future -- where things change, will not have to worry
+that your old programs do not work and you cannot access your precious data because you have prepared yourself
+having nice, documented and ready to use "system in a file".</p>
+<p>There are alternative approaches to storing such "virtual machines" most known is a Virtual Box, but there are many pros of using
+Docker for scientific computing such as:</p>
+<ul>
+<li>having better control of computer resources</li>
+<li>being more lightweight than VirtualBox</li>
+<li>having better tools to run multiple containers and have shared resources or shared information</li>
+<li>being able to store computer "recipies" (dockerfiles) instead of whole disks</li>
+<li>sharing sites such as docker hub</li>
+<li>scaling the system if needed (through docker compose, kubernetes)</li>
+</ul>
+<p>Let's first start by just accessing a ready made system, for example one that does have python and scientific toolbox</p>
+<h2 id="basic-container-startup">Basic container startup</h2>
+<p>Let's open simple jupyter container</p>
+<pre><code class="language-bash">docker run -p 8888:8888 jupyter/minimal-notebook
+</code></pre>
+<p>and manually open the link in the browser.</p>
+<p>Regardless of your native setup, you now have access to a whole toolbox with quite new versions of tools -- in this case a docker with jupyter installed, that you can for example use for some demo.</p>
+<p>That is one of basic uses of the docker and contaiers. You do not need to install whole bunch of software separately, you just need to find a <em>docker image</em> fitting your needs, which is quite possible.</p>
+<h2 id="finding-usefull-docker-images">Finding usefull docker images</h2>
+<p>To do that you can either use google by just putting</p>
+<p>your-search-phase docker container</p>
+<p>or by searching on docker-hub <a href="https://hub.docker.com/">https://hub.docker.com/</a></p>
+<p>Docker hub is a place where people can put their <em>images</em> that is, from our perspective, computer templates that can be used to
+create <em>docker containers</em> -- which are particular expressions of the template.</p>
+<p>Let's use a bit more advanced container image - a datascience one <a href="https://hub.docker.com/r/jupyter/datascience-notebook">https://hub.docker.com/r/jupyter/datascience-notebook</a></p>
+<h2 id="basic-docker-uses">Basic docker uses</h2>
+<p>The most basic docker use is to use the <em>docker run</em> command. The command itself actually does more than just runs a particular image, as you saw in previous examples it also searches the image if not foud locally and compiles the containers from layers.</p>
+<p>The idea of layers is a fun one -- actually if you have many variations of the same container and the only thing that will have to be downloaded or compiled will be the layers that are different between the images. This is a huge storage bonus from that -- compared with Virtual Machines.</p>
+<p>docker run -p 8888:8888 jupyter/datascience-notebook</p>
+<p>Observe that running this command we get "already exists" information -- previous image also used same layers</p>
+<p>Other usefull commands:</p>
+<p>docker run -v</p>
+<p>docker container rm</p>
+<p>docker container logs</p>
+<p>You can use some ready made containers as a programs, with all dependencies solved for you.There is a whole set of, for example bioinformatics images <a href="https://github.com/BioContainers/containers">BioContainers</a></p>
+<p>You can for example, run a <em>blastp</em> tool</p>
+<p>docker run biocontainers/blast:2.2.31 blastp -help</p>
+<p>Or you may want to check this new Python 3.9 that all are talking about</p>
+<p>docker run -v $pwd/my_research:/my_research -it python:3.9.0rc1-buster</p>
+<p>or run something using this newest and latest</p>
+<p>docker run --rm -v $(pwd)/my_research:/my_research python:3.9.0rc1-buster python /my_research/new_python_example.py</p>
+<p>It may be fun and useful to run an <em>interactive</em> session in the container, where you access bash</p>
+<p>docker run --name python_explorations -it python:3.9.0rc1-buster bash</p>
+<p>We can also somewhat hack access to a graphical-user-interface apps,
+for example
+lets run:
+xhost +local:root</p>
+<p>docker run -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY ubuntu
+(and xhost -local:root afterwards)</p>
+<p>inside lets install geany
+apt-get update &amp;&amp; apt-get install geany
+and start geany
+If you are interested in this kind of stuff (for example to share your GUI app to everyone) I recommend using
+X11docker which does all the setup for you</p>
+<h3 id="managing-docker-containers">Managing docker containers</h3>
+<p>We can find the container you created by putting</p>
+<p>docker container list</p>
+<p>If you have never used docker before you will find there only one container, with a strange name. This is because normally containers will be created with a random name.</p>
+<p>docker container start <container_name></p>
+<p>it will start the container with previously used flags, but</p>
+<h3 id="making-and-building-images">Making and building images</h3>
+<p>docker build .</p>
+<p>docker build . --tag</p>
+<p>docker comit mycontainer myimagename</p>
+<h3 id="pushing-to-docker-hub">Pushing to docker hub</h3>
+<p>docker login --username=yourhubusername --email=youremail@company.com
+docker images
+docker tag image_id yourhubusername/verse_gapminder:firsttry
+docker push yourhubusername/verse_gapminder</p>
+<h2 id="docker-tutorial">Docker tutorial</h2>
+<pre><code class="language-bash"># verify installation
+docker --version
+docker --help
+</code></pre>
+<h3 id="images-containers-ports">Images, Containers, Ports</h3>
+<p>Image is a template for creating an environment of your choice, it's also a snapshot. It contains everything need to run an App.</p>
+<p>A container is a running instance of an Image.</p>
+<pre><code class="language-bash"># pull an image from docker hub
+docker pull nginx
+
+# list all images
+docker images
+
+# run a container
+docker run ngnix:latest
+
+# run container in detached mode
+docker run -d nginx:latest
+
+# stop a container
+docker stop &lt;ID&gt;
+
+# list runing containers
+docker container ls
+docker ps
+
+# list runing and not runing containers
+docker ps -a
+
+# stop and remove all containers
+docker rm &lt;ID&gt;
+docker rm $(docker ps -aq) # quiet mode only display ID's
+docker rm -f $(docker ps -aq) # forcefully remove also runing containers
+docker container prune # prefered way of stoping and removing containers
+
+# name containers
+docker run --name website -d -p 3000:80 nginx:latest
+
+# format docker ps output
+docker ps --format=&quot;ID\t{{.ID}}\nNAME\t{{.Names}}\nImage\t{{.Image}}\nPORTS\t{{.Ports}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.CreatedAt}}\nSTATUS\t{{.Status}}\n&quot;
+
+export FORMAT=&quot;ID\t{{.ID}}\nNAME\t{{.Names}}\nImage\t{{.Image}}\nPORTS\t{{.Ports}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.CreatedAt}}\nSTATUS\t{{.Status}}\n&quot;
+
+docker ps --format=$FORMAT
+
+# expose ports
+docker run -d -p 8080:80 nginx:latest
+
+# expose multiple ports
+docker run -d -p 8080:80 -p 3000:80 nginx:latest
+</code></pre>
+<h3 id="volumes">Volumes</h3>
+<p>Allows sharing of data (Files and Folders) between Host and between containers.</p>
+<pre><code class="language-bash"># read only folder for static web content
+docker run --name website -v /some/content:/usr/share/nginx/html:ro -d nginx
+
+docker run --name website -v $(pwd):/usr/share/nginx/html:ro -d nginx # uses current directory content
+
+docker run --name website -v $(pwd):/usr/share/nginx/html -d nginx # removed read only flag
+
+# access a runing container via terminal
+docker exec -it website bash
+
+# share volume between containers
+docker run --name website-copy --volumes-from website -d - p 8081:80 nginx
+</code></pre>
+<h3 id="building-images">Building Images</h3>
+<p>Create own images with a Dockerfile.</p>
+<pre><code class="language-dockerfile">FROM nginx:latest
+ADD . /usr/share/nginx/html
+</code></pre>
+<p>Build image from directory with Dockerfile.</p>
+<pre><code class="language-bash">docker build --tag website:latest .
+</code></pre>
+<h3 id="dockerignore">.dockerignore</h3>
+<p>Create a <strong>.dockerignore</strong> file to specify files and folders not needed inside the container.</p>
+<pre><code class="language-dockerignore">node_modules
+Dockerfile
+.git
+*.fastq
+folder/*
+</code></pre>
+<h3 id="reducing-image-size">Reducing image size</h3>
+<p>Use Alpine images.</p>
+<pre><code class="language-bash">docker pull node:lts-alpine
+docker pull nginx:alpine
+</code></pre>
+<h3 id="tags-and-versioning">Tags and versioning</h3>
+<p>Allows you to control image version.
+Avoids breaking changes.</p>
+<pre><code class="language-dockerfile">FROM node:8-alpine
+</code></pre>
+<pre><code class="language-bash">docker build -t website:latest .
+docker tag website:latest website:version1
+</code></pre>
+<h3 id="docker-registries">Docker Registries</h3>
+<p>Highly scalable server side application that stores and lets you distribute Docker images. Used in CD/CI Pipeline. Run your applictions.</p>
+<pre><code class="language-bash"># upload an image to docker hub
+docker tag website:latest sheucke/website:1
+docker login
+docker push sheucke/website:1
+
+# download an image
+docker pull sheucke/website:1
+</code></pre>
+<h3 id="debugging-containers">Debugging Containers</h3>
+<pre><code class="language-bash"># information of container in json format
+docker inspect &lt;ID&gt;
+
+# show logs
+docker logs &lt;ID&gt;
+docker logs -f &lt;ID&gt; # realtime follow
+
+# get into a container
+docker exec -it &lt;ID&gt; /bin/bash
+</code></pre>
+<h2 id="docker-compose">Docker Compose</h2>
+<h2 id="anatomy-of-dockerfile">Anatomy of Dockerfile</h2>
+<p>Set the base image to Ubuntu <em>must be first instruction</em> - use docker search to find images</p>
+<pre><code class="language-dockerfile">FROM ubuntu # &lt;image&gt;
+FROM ubuntu:latest # - &lt;image&gt;:&lt;tag&gt;
+FROM ubuntu:precise (LTS)
+</code></pre>
+<p>Set the maintainer info</p>
+<pre><code class="language-dockerfile">MAINTAINER Sebastian Heucke, sebastian.heucke@med.uni-muenchen.de # &lt;name&gt;
+</code></pre>
+<p>Copy a local/remote file into the container
+Also supports auto extracting of .tar.gz into destination and can copy from remote locations (ie raw.github)</p>
+<pre><code class="language-dockerfile">ADD ./index.html /var/www/index.html # &lt;src&gt; &lt;dest&gt;
+</code></pre>
+<p>Prefer copy over add: <a href="http://docs.docker.com/articles/dockerfile_best-practices/#add-or-copy">http://docs.docker.com/articles/dockerfile_best-practices/#add-or-copy</a>
+Copy only supports copying local files</p>
+<pre><code class="language-dockerfile">COPY ./index.html /var/www/index.html
+
+COPY . . # copy everything from the local directory to the container
+</code></pre>
+<p>Sets the user name to use</p>
+<pre><code class="language-dockerfile">USER username
+</code></pre>
+<p>ENV set env vars</p>
+<pre><code class="language-dockerfile">ENV KEY 1234 # &lt;key&gt; &lt;value&gt;
+</code></pre>
+<p>Runs a command on the image and commits the result</p>
+<pre><code class="language-dockerfile">RUN apt-get install vim # &lt;command&gt; - equivalent to docker run ubuntu apt-get install vim &amp;&amp; docker commit XXXX
+</code></pre>
+<p>The WORKDIR directive is used to set where the command defined with CMD is to be executed.</p>
+<pre><code class="language-bash">WORKDIR /home/dev
+</code></pre>
+<p>Like an exec, preferred (A minimal $PATH only)</p>
+<pre><code class="language-dockerfile">ENTRYPOINT [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]
+</code></pre>
+<p>Execute as a shell (Your $PATH is setup this way)</p>
+<pre><code class="language-dockerfile">ENTRYPOINT command param1 param2
+</code></pre>
+<p>this:</p>
+<pre><code class="language-dockerfile">CMD [&quot;-l&quot;,&quot;-&quot;]
+ENTRYPOINT [&quot;/usr/bin/wc&quot;]
+</code></pre>
+<p>and this:</p>
+<pre><code class="language-dockerfile">ENTRYPOINT wc -l -
+</code></pre>
+<p>and this:</p>
+<pre><code class="language-dockerfile">ENTRYPOINT [&quot;wc&quot;, &quot;-l&quot;, &quot;-&quot;]
+</code></pre>
+<p>are all equivalent</p>
+<p>Exposes this port on the container to the outside world</p>
+<pre><code class="language-dockerfile">EXPOSE 80 # &lt;port&gt; [&lt;port&gt;...]
+</code></pre>
+<p>Adds one or more new volumes to any container created from the image</p>
+<pre><code class="language-dockerfile">VOLUME [&quot;/data&quot;] # [&lt;volumes&gt;...], puts /data -&gt; /var/lib/docker/volumes/
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../why_django.html" class="btn btn-neutral" title="Why Django?"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../why_django.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

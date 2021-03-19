@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Markdown
+
+Markdown is a simple way to format text that looks great on any device. It doesn’t do anything fancy like change the font size, color, or type — just the essentials, using keyboard symbols you already know.
+
+---
+
+# Introduction
+
+Each slide introduces a single Markdown concept with an example.
+---
+
+# Emphasis
+
+To create bold or italic, wrap with asterisks * or underscores _.
+
+*Italics*
+
+**Bold**
+
+---
+# Paragraphs
+
+A paragraph is consecutive lines of text with one or more blank lines between them.
+
+This is the first paragraph.
+
+This is the second paragrph.
+
+---
+# Headings
+
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+---
+# blockqote
+The quote “Somewhere, something incredible is waiting to be known” has been ascribed to Carl Sagan.
+---
+# unordered list
+
+- Flour
+- Cheese
+- Tomatoes
+---
+# links
+You can search anything at <https://www.google.de>
+---
+# images
+
+![Tux, the Linux mascot](./images/tux.png)
+---
+# code
+
+When `x = 3`, that means `x + 2 = 5`
+
+A loop in JavaScript:
+
+```javascript
+var i;
+for (i=0; i<5; i++) {
+  console.log(i);
+}
+```
+---
+# nested list
+
+* Fruit
+  * Apple
+  * Orange
+  * Banana
+* Dairy
+  * Milk
+  * Cheese
+
++ World Cup 2014
+  1. Germany
+  2. Argentina
+  3. Netherlands
++ Rugby World Cup 2015
+  1. New Zealand
+  2. Australia
+  3. South Africa
+---
+# Latex
+
+`$$a^2 + b^2 = c^2$$`
+
+`$$\begin{vmatrix}a & b\\
+c & d
+\end{vmatrix}=ad-bc$$`
+---
+# Important notes
+
+1. To add little spacing in math mode use \,
+2. To add a new line when in math mode use \\
+3. To display fraction use \frac{arg 1}{arg 2}
+4. For power (superscripts text) use ^{}
+5. For indices (subscripts) use _{}
+6. For roots use \sqrt[n]{arg}
+
+`$$
+\frac{arg 1}{arg 2} \\
+x^2\\
+e^{i\pi}\\
+A_i\\
+B_{ij}\\
+\sqrt[n]{arg}	
+$$`
+
+---
+# Greek letters
+
+![greek_letters](./images/greek_letters.png)
+---
+# roman names
+
+![roman_names](/images/roman_names.png)
+
+---
+# Sets and logic
+
+![sets_and_logic](./images/sets_and_logic.png)
+---
+# Other symbols
+
+![other symbols](./images/other_symbols.png)
+---
+# Vertical curly braces
+
+`$$
+sign(x) = \left\{
+    \begin{array}\\
+        1 & \mbox{if } \ x \in \mathbf{N}^* \\
+        0 & \mbox{if } \ x = 0 \\
+        -1 & \mbox{else.}
+    \end{array}
+\right.
+$$`
+
+
+`$$
+ \left.
+    \begin{array} \\
+        \alpha^2 = \sqrt5 \\
+        \alpha \geq 0 
+    \end{array}
+\right \}=\alpha = 5 
+$$`
+
+---
+# Derivative
+
+First order derivative : `$$f'(x)$$` 
+K-th order derivative  : `$$f^{(k)}(x)$$`
+Partial firt order deivative	: `$$\frac{\partial f}{\partial x}$$`
+Partial k-th order derivative	: `$$\frac{\partial^{k} f}{\partial x^k}$$`
+---
+# Limits
+Limit at plus infinity	: `$$\lim_{x \to +\infty} f(x)$$` 
+Limit at minus infinity	: `$$\lim_{x \to -\infty} f(x)$$`	
+Limit at `$\alpha$`  :`$$\lim_{x \to \alpha} f(x)$$`
+---
+# Sum
+
+Sum from 0 to +inf:
+
+`$$\sum_{j=0}^{+\infty} A_{j}$$`
+
+Double sum:
+`$$\sum^k_{i=1}\sum^{l+1}_{j=1}\,A_i A_j$$`	
+
+
+Taylor expansion of `$e^x$`:
+`$$ e^x  = \sum_{k=0}^{n}\, \frac{x^k}{k!} + o(x^n) $$`
+
+---
+# Product
+
+`$$\prod_{j=1}^k A_{\alpha_j}$$`
+Double product:
+`$$\prod^k_{i=1}\prod^l_{j=1}\,A_i A_j$$`	
+
+---
+# Integral
+
+Simple integral:
+`$$\int_{a}^b f(x)dx$$`
+
+Double integral:
+`$$\int_{a}^b\int_{c}^d f(x,y)\,dxdy$$`	
+
+Triple integral:
+`$$\iiint$$`	
+
+---
+# Matrix
+Plain:
+
+`\begin{matrix}
+1 & 2 & 3\\
+a & b & c
+\end{matrix}`
+
+Round brackets:
+`\begin{pmatrix}
+1 & 2 & 3\\
+a & b & c
+\end{pmatrix}`
+
+Curly brackets:
+`\begin{Bmatrix}
+1 & 2 & 3\\
+a & b & c
+\end{Bmatrix}`
+
+---
+
+# table
+
+| Syntax      | Description | Test Text     |
+| :---        |    :----:   |          ---: |
+| Header      | Title       | Here's this   |
+| Paragraph   | Text        | And more      |
+
+---
+# fenced code block
+
+```
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "age": 25
+}
+```
+---
+# Footnote
+
+Here's a sentence with a footnote. [^1]
+
+[^1]: This is the footnote.
+
+---
+# strikethrough
+
+~~The world is flat.~~
+---
+# task list
+
+- [x] Write the press release
+- [ ] Update the website
+- [ ] Contact the media
+---
+# Horizontal rule
+
+Try to put a blank line before...
+
+***
+
+...and after a horizontal rule.
+
+
+
+
+
+
+
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+    <script src="//yihui.org/js/math-code.js"></script>
+<!-- Just one possible MathJax CDN below. You may use others. -->
+    <script async
+    src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+
+    </script>
+  </body>
+</html>
