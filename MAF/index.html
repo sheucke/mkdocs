@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>MAF - Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "MAF";
+    var mkdocs_page_input_path = "MAF.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../HRD_score/">HRD Score</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../git/">Git</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Yaml_files/">Yaml</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../remark_boilerplate.html">Markdown</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Conda/">Conda</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Django/">Django</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../why_django.html">Why Django?</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Docker/">Docker</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Miracum_pipe_galaxy/">Miracum Galaxy</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">MAF</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#task">Task</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#description">Description</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#generating-maf-files">Generating MAF files</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#vcf2maf-tool">vcf2maf tool</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#install-ensembls-vep-v102-with-local-cache-for-running-offline">Install Ensembl's VEP v102 with local cache for running offline</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#quick-start-vcf2maf">Quick start vcf2maf</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#converting-annovar-output-to-maf-using-maftools-annovartomaf">Converting Annovar output to maf using maftools 'annovarToMaf'</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#funcotator-tool">Funcotator tool</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#optional-parameters">Optional Parameters</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#transfer-of-maf-files-to-cbioportal-server">Transfer of MAF files to cBioPortal server</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>MAF</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="mutation-annotation-format-maf">Mutation Annotation Format (MAF)</h1>
+<h2 id="task">Task</h2>
+<p>MAF files for BZKF/MTB.
+The document contains my research on that topic and summarizes the information I found.</p>
+<h2 id="description">Description</h2>
+<p>Mutation Annotation Format (MAF) files are tab-delimited files that contain somatic and/or germline mutation annotations.</p>
+<p>Variants are discovered by aligning DNA sequences derived from tumor samples and sequences derived from normal samples to a reference sequence. A MAF file identifies, for all samples in a project, the discovered putative or validated mutations and categorizes those mutations (polymorphism, deletion, or insertion) as somatic (originating in the tumor tissue) or germline (originating from the germline). Mutation annotation are also reported. Note that VCF files report on all transcripts affected by a mutation while MAF files only report on the most affected one.</p>
+<p>The GDC MAF file format <a href="https://docs.gdc.cancer.gov/Data/File_Formats/MAF_Format/">https://docs.gdc.cancer.gov/Data/File_Formats/MAF_Format/</a> is based on the TCGA Mutation Annotation Format specifications, with additional columns included.</p>
+<h2 id="generating-maf-files">Generating MAF files</h2>
+<ul>
+<li>
+<p>For VCF files or simple tabular files, easy option is to use vcf2maf (<a href="https://github.com/mskcc/vcf2maf">https://github.com/mskcc/vcf2maf</a>) utility which will annotate VCFs, prioritize transcripts, and generates an MAF. Recent updates to gatk has also enabled funcotator (<a href="https://gatk.broadinstitute.org/hc/en-us/articles/360035889931-Funcotator-Information-and-Tutorial#1.1">https://gatk.broadinstitute.org/hc/en-us/articles/360035889931-Funcotator-Information-and-Tutorial#1.1</a>) to generate MAF files.</p>
+</li>
+<li>
+<p>If you’re using ANNOVAR for variant annotations, maftools has a handy function annovarToMaf for converting tabular annovar outputs to MAF.</p>
+</li>
+</ul>
+<h3 id="vcf2maf-tool">vcf2maf tool</h3>
+<p>To convert a VCF into a MAF, each variant must be mapped to only one of all possible gene transcripts/isoforms that it might affect. But even within a single isoform, a Missense_Mutation close enough to a Splice_Site, can be labeled as either in MAF format, but not as both. This selection of a single effect per variant, is often subjective. And that's what this project attempts to standardize. The vcf2maf and maf2maf scripts leave most of that responsibility to Ensembl's VEP, but allows you to override their "canonical" isoforms, or use a custom ExAC VCF for annotation. Though the most useful feature is the extensive support in parsing a wide range of crappy MAF-like or VCF-like formats we've seen out in the wild.</p>
+<h4 id="install-ensembls-vep-v102-with-local-cache-for-running-offline">Install Ensembl's VEP v102 with local cache for running offline</h4>
+<p><a href="https://gist.github.com/ckandoth/61c65ba96b011f286220fa4832ad2bc0">https://gist.github.com/ckandoth/61c65ba96b011f286220fa4832ad2bc0</a></p>
+<p>Ensembl's VEP (<a href="https://useast.ensembl.org/info/docs/tools/vep/index.html">Variant Effect Predictor</a>) is popular for how it picks a single effect per gene as <a href="https://useast.ensembl.org/info/docs/tools/vep/script/vep_other.html#pick">detailed here</a>, its CLIA-compliant <a href="https://varnomen.hgvs.org">HGVS variant format</a>, and <a href="https://useast.ensembl.org/info/genome/variation/prediction/predicted_data.html">Sequence Ontology nomenclature</a> for variant effects.</p>
+<p>Instead of the <a href="https://uswest.ensembl.org/info/docs/tools/vep/script/vep_download.html#installer">official instructions</a>, we will use conda to install VEP and its dependencies. If you don't already have conda, install it into <code>$HOME/miniconda3</code> as follows:</p>
+<pre><code class="language-bash">curl -sL https://repo.anaconda.com/miniconda/Miniconda3-py37_4.9.2-Linux-x86_64.sh -o /tmp/miniconda.sh
+sh /tmp/miniconda.sh -bfp $HOME/miniconda3
+</code></pre>
+<p>Add the conda <code>bin</code> folder into your <code>$PATH</code> so that all installed tools are accessible via command-line. You can also add this to your <code>~/.bashrc</code> or <code>~/.profile</code> for this to persist across logins:</p>
+<pre><code class="language-bash">export PATH=$HOME/miniconda3/bin:$PATH
+</code></pre>
+<p>Download and install VEP, its dependencies, and also samtools/bcftools/liftOver:</p>
+<pre><code class="language-bash">conda install -qy -c conda-forge -c bioconda -c defaults ensembl-vep==102.0 htslib==1.10.2 bcftools==1.10.2 samtools==1.10 ucsc-liftover==377
+</code></pre>
+<p>Download VEP's offline cache for GRCh38, and the reference FASTA:</p>
+<pre><code class="language-bash">mkdir -p $HOME/.vep/homo_sapiens/102_GRCh38/
+rsync -avr --progress rsync://ftp.ensembl.org/ensembl/pub/release-102/variation/indexed_vep_cache/homo_sapiens_vep_102_GRCh38.tar.gz $HOME/.vep/
+tar -zxf $HOME/.vep/homo_sapiens_vep_102_GRCh38.tar.gz -C $HOME/.vep/
+rsync -avr --progress rsync://ftp.ensembl.org/ensembl/pub/release-102/fasta/homo_sapiens/dna_index/ $HOME/.vep/homo_sapiens/102_GRCh38/
+</code></pre>
+<p>(Optional) Download VEP's offline cache for GRCh37, and the reference FASTA which we must bgzip instead of gzip:</p>
+<pre><code class="language-bash">mkdir -p $HOME/.vep/homo_sapiens/102_GRCh37/
+rsync -avr --progress rsync://ftp.ensembl.org/ensembl/pub/release-102/variation/indexed_vep_cache/homo_sapiens_vep_102_GRCh37.tar.gz $HOME/.vep/
+tar -zxf $HOME/.vep/homo_sapiens_vep_102_GRCh37.tar.gz -C $HOME/.vep/
+rsync -avr --progress rsync://ftp.ensembl.org/ensembl/pub/grch37/release-102/fasta/homo_sapiens/dna/Homo_sapiens.GRCh37.dna.toplevel.fa.gz $HOME/.vep/homo_sapiens/102_GRCh37/
+gzip -d $HOME/.vep/homo_sapiens/102_GRCh37/Homo_sapiens.GRCh37.dna.toplevel.fa.gz
+bgzip -i $HOME/.vep/homo_sapiens/102_GRCh37/Homo_sapiens.GRCh37.dna.toplevel.fa
+samtools faidx $HOME/.vep/homo_sapiens/102_GRCh37/Homo_sapiens.GRCh37.dna.toplevel.fa.gz
+</code></pre>
+<p>Test running VEP in offline mode on a GRCh38 VCF:</p>
+<pre><code class="language-bash">curl -sLO https://raw.githubusercontent.com/Ensembl/ensembl-vep/release/102/examples/homo_sapiens_GRCh38.vcf
+vep --species homo_sapiens --assembly GRCh38 --offline --no_progress --no_stats --sift b --ccds --uniprot --hgvs --symbol --numbers --domains --gene_phenotype --canonical --protein --biotype --tsl --pubmed --variant_class --shift_hgvs 1 --check_existing --total_length --allele_number --no_escape --xref_refseq --failed 1 --vcf --minimal --flag_pick_allele --pick_order canonical,tsl,biotype,rank,ccds,length --dir $HOME/.vep --fasta $HOME/.vep/homo_sapiens/102_GRCh38/Homo_sapiens.GRCh38.dna.toplevel.fa.gz --input_file homo_sapiens_GRCh38.vcf --output_file homo_sapiens_GRCh38.vep.vcf --polyphen b --af --af_1kg --af_esp --regulatory
+</code></pre>
+<h4 id="quick-start-vcf2maf">Quick start vcf2maf</h4>
+<p>Find the <a href="https://github.com/mskcc/vcf2maf/releases">latest stable release</a>, download it, and view the detailed usage manuals for <code>vcf2maf</code> and <code>maf2maf</code>:</p>
+<pre><code class="language-bash">export VCF2MAF_URL=`curl -sL https://api.github.com/repos/mskcc/vcf2maf/releases | grep -m1 tarball_url | cut -d\&quot; -f4`
+curl -L -o mskcc-vcf2maf.tar.gz $VCF2MAF_URL; tar -zxf mskcc-vcf2maf.tar.gz; cd mskcc-vcf2maf-*
+perl vcf2maf.pl --man
+perl maf2maf.pl --man
+</code></pre>
+<p>If you don't have <a href="http://useast.ensembl.org/info/docs/tools/vep/index.html">VEP</a> installed, then <a href="https://gist.github.com/ckandoth/61c65ba96b011f286220fa4832ad2bc0">follow this gist</a>. Of the many annotators out there, VEP is preferred for its large team of active coders, and its CLIA-compliant <a href="http://www.hgvs.org/mutnomen/recs.html">HGVS formats</a>. After installing VEP, test out <code>vcf2maf</code> like this:</p>
+<pre><code class="language-bash">perl vcf2maf.pl --input-vcf tests/test.vcf --output-maf tests/test.vep.maf
+</code></pre>
+<p>To fill columns 16 and 17 of the output MAF with tumor/normal sample IDs, and to parse out genotypes and allele counts from matched genotype columns in the VCF, use options <code>--tumor-id</code> and <code>--normal-id</code>. Skip option <code>--normal-id</code> if you didn't have a matched normal:</p>
+<pre><code class="language-bash">perl vcf2maf.pl --input-vcf tests/test.vcf --output-maf tests/test.vep.maf --tumor-id WD1309 --normal-id NB1308
+</code></pre>
+<p>If you want to skip running VEP and need a minimalist MAF-like file listing data from the input VCF only, then use the <code>--inhibit-vep</code> option. If your input VCF contains VEP annotation, then <code>vcf2maf</code> will try to extract it. But be warned that the accuracy of your resulting MAF depends on how VEP was operated upstream. In standard operation, <code>vcf2maf</code> runs VEP with very specific parameters to make sure everyone produces comparable MAFs. So, it is strongly recommended to avoid <code>--inhibit-vep</code> unless you know what you're doing.</p>
+<h3 id="converting-annovar-output-to-maf-using-maftools-annovartomaf">Converting Annovar output to maf using maftools 'annovarToMaf'</h3>
+<p>Annovar output is generally in a tabular format with various annotation columns. This function converts such annovar output files into MAF. This function requires that annovar was run with gene based annotation as a first operation, before including any filter or region based annotations.</p>
+<pre><code class="language-bash">table_annovar.pl example/ex1.avinput humandb/ -buildver hg19 -out myanno -remove -protocol (refGene),cytoBand,dbnsfp30a -operation (g),r,f -nastring NA
+</code></pre>
+<pre><code class="language-bash">perl table_annovar.pl variants.tsv ~/path/to/humandb/ -buildver hg19
+-out variants --otherinfo -remove -protocol ensGene -operation g -nastring NA
+</code></pre>
+<p><code>table_annovar.pl</code> can directly support input and output of VCF files (the annotation will be written to the INFO field of the output VCF file).</p>
+<pre><code class="language-bash">perl table_annovar.pl example/ex2.vcf humandb/ -buildver hg19 -out myanno -remove -protocol refGene,cytoBand,exac03,avsnp147,dbnsfp30a -operation g,r,f,f,f -nastring . -vcfinput -polish
+</code></pre>
+<p>A vcf file is created ex2.hg19_multianno.vcf. Additionally, a tab-delimited output file is also available as ex2.hg19_multianno.txt, which contains similar information in a different format.</p>
+<p><code>annovarToMaf</code> mainly uses gene based annotations for processing, rest of the annotation columns from input file will be attached to the end of the resulting MAF.</p>
+<p>in R now do the follwing:</p>
+<pre><code class="language-R">if (!require(&quot;BiocManager&quot;))
+    install.packages(&quot;BiocManager&quot;)
+BiocManager::install(&quot;maftools&quot;)
+
+install.packages('R.utils')
+
+library(maftools)
+
+var.annovar = system.file(&quot;extdata&quot;, &quot;variants.hg19_multianno.txt&quot;, package = &quot;maftools&quot;)
+var.annovar.maf = annovarToMaf(annovar = var.annovar, Center = 'CSI-NUS', refBuild = 'hg19',tsbCol = 'Tumor_Sample_Barcode', table = 'ensGene')
+
+write.table(var.annovar.maf, file = &quot;var.annovar_tsv.maf&quot;, sep='\t', quote=FALSE)
+</code></pre>
+<p>Annovar, when used with Ensemble as a gene annotation source, uses ensemble gene IDs as Gene names. In that case, use <code>annovarToMaf</code> with argument table set to ensGene which converts ensemble gene IDs into HGNC symbols.</p>
+<h3 id="funcotator-tool">Funcotator tool</h3>
+<p>Funcotator (FUNCtional annOTATOR) analyzes given variants for their function (as retrieved from a set of data sources) and produces the analysis in a specified output file.</p>
+<p>This tool allows a user to add their own annotations to variants based on a set of data sources. Each data source can be customized to annotate a variant based on several matching criteria. This allows a user to create their own custom annotations easily, without modifying any Java code.</p>
+<p>An example Funcotator workflow based on the GATK Best Practices Somatic Pipeline is as follows:</p>
+<p><img alt="funcotator" src="../images/funcotatorPipeline.png" /></p>
+<p>The MAF format used in Funcotator is an extension of the standard TCGA MAF. It is based on the MAF format specified for Oncotator here under Output Format. While the actual columns can vary (due to different data sources being used to create annotations), columns 1-67 will generally be the same.</p>
+<p>In the case of a variant with multiple alternate alleles, each alternate allele will be written to a separate line in the MAF file.</p>
+<p>A MAF instantiation of the Funcotator tool looks like this:</p>
+<pre><code class="language-bash">./gatk Funcotator \
+     --variant variants.vcf \
+     --reference Homo_sapiens_assembly19.fasta \
+     --ref-version hg19 \
+     --data-sources-path funcotator_dataSources.v1.2.20180329 \
+     --output variants.funcotated.maf \
+     --output-file-format MAF
+</code></pre>
+<h4 id="optional-parameters">Optional Parameters</h4>
+<p><code>- --ignore-filtered-variants</code> this flag controls whether Funcotator will annotate filtered variants. By default, this flag is set to true. To annotate filtered variants, run Funcotator with this flag set to false.</p>
+<p><code>- --transcript-selection-mode</code> this parameter determines how the primary annotated transcript is determined. The two modes for this parameter are BEST_EFFECT, CANONICAL, and ALL. By default, Funcotator uses the CANONICAL transcript selection mode.</p>
+<p>The explanations and rules governing the two transcript selection modes are as follows:</p>
+<p>BEST_EFFECT</p>
+<p>Select a transcript to be reported with details with priority on effect according to the folowing list of selection criteria:</p>
+<ul>
+<li>Choose the transcript that is on the custom list specified by the user. If no list was specified, treat as if no transcripts were on the list (tie).</li>
+<li>In case of tie, choose the transcript that yields the variant classification highest on the variant classification rank list (see below).</li>
+<li>If still a tie, choose the transcript with highest level of curation. Note that this means lower number is better for level (see below).</li>
+<li>If still a tie, choose the transcript with the best appris annotation (see below).</li>
+<li>If still a tie, choose the transcript with the longest transcript sequence length.</li>
+<li>If still a tie, choose the first transcript, alphabetically.</li>
+</ul>
+<p>CANONICAL</p>
+<p>Select a transcript to be reported with details with priority on canonical order according to the folowing list of selection criteria:</p>
+<ul>
+<li>Choose the transcript that is on the custom list specified by the user. If no list was specified, treat as if all transcripts were on the list (tie).</li>
+<li>In case of tie, choose the transcript with highest level of curation. Note that this means lower number is better for level (see below).</li>
+<li>If still a tie, choose the transcript that yields the variant classification highest on the variant classification rank list (see below).</li>
+<li>If still a tie, choose the transcript with the best appris annotation (see below).</li>
+<li>If still a tie, choose the transcript with the longest transcript sequence length.</li>
+<li>If still a tie, choose the first transcript, alphabetically.</li>
+</ul>
+<p><code>--transcript-list</code> this parameter will restrict the reported/annotated transcripts to only include those on the given list of transcript IDs. This list can be given as the path to a file containing one transcript ID per line OR this parameter can be given multiple times each time specifying a transcript ID.</p>
+<p>When specifying transcript IDs, transcript version numbers will be ignored.</p>
+<p>Using a manually specified set of transcripts for the transcript list:</p>
+<pre><code class="language-bash">./gatk Funcotator \
+     --variant variants.vcf \
+     --reference Homo_sapiens_assembly19.fasta \
+     --ref-version hg19 \
+     --data-sources-path funcotator_dataSources.v1.2.20180329 \
+     --output variants.funcotated.maf \
+     --output-file-format MAF \
+     --transcript-list TRANSCRIPT_ID1 \
+     --transcript-list TRANSCRIPT_ID2
+</code></pre>
+<pre><code class="language-bash">./gatk Funcotator \
+     --variant variants.vcf \
+     --reference Homo_sapiens_assembly19.fasta \
+     --ref-version hg19 \
+     --data-sources-path funcotator_dataSources.v1.2.20180329 \
+     --output variants.funcotated.maf \
+     --output-file-format MAF \
+     --transcript-list transcriptFile.txt
+</code></pre>
+<p>Contents of transcriptFile.txt:</p>
+<pre><code class="language-bash">TRANSCRIPT_ID1
+TRANSCRIPT_ID2
+</code></pre>
+<p><code>--annotation-default</code> this parameter specifies a default value for an annotation. This default value for this annotation will be used for any annotated variant. However if this annotation would be added by Funcotator to this variant, the Funcotator value will overwrite this default.</p>
+<p>For example, to set the Center annotation to broad.mit.edu:</p>
+<pre><code class="language-bash">./gatk Funcotator \
+     --variant variants.vcf \
+     --reference Homo_sapiens_assembly19.fasta \
+     --ref-version hg19 \
+     --data-sources-path funcotator_dataSources.v1.2.20180329 \
+     --output variants.funcotated.maf \
+     --output-file-format MAF \
+     --annotation-default Center:broad.mit.edu
+</code></pre>
+<p><code>--annotation-override</code> this parameter specifies an override value for an annotation. If the annotation were to be added to a variant by a data source, the value for that annotation would be replaced with the value specified in the annotation override. If the annotation would not be added by a data source it is added to the output with the given value.</p>
+<p>For example, to override the NCBI_Build annotation to HG19:</p>
+<pre><code class="language-bash">./gatk Funcotator \
+     --variant variants.vcf \
+     --reference Homo_sapiens_assembly19.fasta \
+     --ref-version hg19 \
+     --data-sources-path funcotator_dataSources.v1.2.20180329 \
+     --output variants.funcotated.maf \
+     --output-file-format MAF \
+     --annotation-override NCBI_Build:HG19
+</code></pre>
+<h2 id="transfer-of-maf-files-to-cbioportal-server">Transfer of MAF files to cBioPortal server</h2>
+<p>In the cronjobs file add the following line to daily transfer a folder with MAF Files to the remote cBioPortal server.</p>
+<pre><code class="language-bash">@daily scp -r /local/maf_directory remote_username@10.10.0.2:/remote/maf_directory
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../Miracum_pipe_galaxy/" class="btn btn-neutral" title="Miracum Galaxy"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../Miracum_pipe_galaxy/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

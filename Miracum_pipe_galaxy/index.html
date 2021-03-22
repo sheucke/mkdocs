@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Miracum Galaxy - Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Miracum Galaxy";
+    var mkdocs_page_input_path = "Miracum_pipe_galaxy.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../HRD_score/">HRD Score</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../git/">Git</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Yaml_files/">Yaml</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../remark_boilerplate.html">Markdown</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Conda/">Conda</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Django/">Django</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../why_django.html">Why Django?</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Docker/">Docker</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Miracum Galaxy</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#galaxy-docker-image">Galaxy docker image</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#miracum-galaxy-image-for-genomic-variant-analysis">MIRACUM Galaxy Image for Genomic Variant Analysis</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#workflows-and-auxillary-data">Workflows and auxillary data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#getting-the-image-ready-for-production-use">Getting the image ready for production use</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#reference-data">Reference data</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#on-demand-reference-data-with-cvmfs">On-demand reference data with CVMFS</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#installation-der-referenzdaten">Installation der Referenzdaten</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#workflows">Workflows</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#adding-the-miracum-workflows-to-the-server">Adding the Miracum workflows to the server</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#annotation-data">Annotation data</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#prepare-the-variantsgene-annotation-data-for-the-miracum-galaxy-workflows">Prepare the variants/gene annotation data for the Miracum Galaxy workflows</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../MAF/">MAF</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Miracum Galaxy</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="miracum-pipe-galaxy">MIRACUM-Pipe-Galaxy</h1>
+<p>This document collects various github pages concerning set up of a docker MIRACUM Galaxy instance as one complete document.</p>
+<h2 id="galaxy-docker-image">Galaxy docker image</h2>
+<p>The Galaxy Docker Image is an easy distributable full-fledged Galaxy installation, that can be used for testing, teaching and presenting new tools and features.</p>
+<p>One of the main goals is to make the access to entire tool suites as easy as possible. Usually, this includes the setup of a public available web-service that needs to be maintained, or that the Tool-user needs to either setup a Galaxy Server by its own or to have Admin access to a local Galaxy server. With docker, tool developers can create their own Image with all dependencies and the user only needs to run it within docker.</p>
+<h2 id="miracum-galaxy-image-for-genomic-variant-analysis">MIRACUM Galaxy Image for Genomic Variant Analysis</h2>
+<p>The simplest way to get a Galaxy instance with all required tools up and running is to use the preconfigured docker image. The current version of this image can be pulled from <quay.io/bgruening/galaxy-exome-seq:miracum_20.09>. Basic usage instructions are available here (<a href="https://github.com/bgruening/docker-galaxy-exome-seq/blob/miracum_20.09/README.md">https://github.com/bgruening/docker-galaxy-exome-seq/blob/miracum_20.09/README.md</a>).</p>
+<p>This image provides Galaxy release 20.09 and all tools required to run the MIRACUM workflows for somatic variant calling.</p>
+<p>You can launch a fully functional Galaxy from this image via:</p>
+<pre><code class="language-bash">docker run -d -p 8080:80 -p 8021:21 -p 8022:22 quay.io/bgruening/galaxy-exome-seq:miracum_20.09
+</code></pre>
+<p>Usage details of the image are as described for the galaxy-stable parent image, in particular:</p>
+<ul>
+<li>the image is based on Ubuntu 18.04 LTS</li>
+<li>it uses PostgreSQL version 11.5, which means users of the previous miracum_19.01 image will have to migrate their database to this new version.</li>
+<li>The preconfigured Galaxy <code>admin</code> user has the password <code>password</code> and the API key <code>fakekey</code> (for users of miracum_19.01: note that both the password and the API key have changed compared to the old version).</li>
+</ul>
+<h2 id="workflows-and-auxillary-data">Workflows and auxillary data</h2>
+<p>The workflow definition files, variants and genes annotation data, example configuration files and documentation required to run actual analyses with this image are available from the accompanying MIRACUM-Pipe-Galaxy repo (<a href="https://github.com/AG-Boerries/MIRACUM-Pipe-Galaxy">https://github.com/AG-Boerries/MIRACUM-Pipe-Galaxy</a>)</p>
+<h3 id="getting-the-image-ready-for-production-use">Getting the image ready for production use</h3>
+<p>Docker images are "read-only", all your changes inside one session will be lost after restart. This mode is useful to present Galaxy to your colleagues or to run workshops with it. To install Tool Shed repositories or to save your data you need to export the calculated data to the host computer.</p>
+<p>Fortunately, this is as easy as:</p>
+<p>for a normal Galaxy instance:</p>
+<pre><code class="language-bash">docker run -d -p 8080:80 -v /home/user/galaxy_storage/:/export/ bgruening/galaxy-stable
+</code></pre>
+<p>for the MIRACUM Galaxy instance:</p>
+<pre><code class="language-bash">docker run -d -p 8080:80 -p 8021:21 -p 8022:22 -v /home/ubuntu/galaxy_storage/:/export/ bgruening/galaxy-exome-seq
+</code></pre>
+<p>With the additional -v /home/user/galaxy_storage/:/export/ parameter, Docker will mount the local folder /home/user/galaxy_storage into the Container under /export/. A startup script, that is usually starting nginx, PostgreSQL and Galaxy, will recognize the export directory with one of the following outcomes:</p>
+<ul>
+<li>In case of an empty /export/ directory, it will move the PostgreSQL database, the Galaxy database directory, Shed Tools and Tool Dependencies and various config scripts to /export/ and symlink back to the original location.</li>
+<li>In case of a non-empty /export/, for example if you continue a previous session within the same folder, nothing will be moved, but the symlinks will be created.</li>
+</ul>
+<p>This enables you to have different export folders for different sessions - means real separation of your different projects.</p>
+<p>Once you have pulled a suitable Galaxy image and have launched a container with Galaxy you will have to do some initial setup work on your Galaxy instance to prepare it for its users and their analysis needs.</p>
+<p>This work will always involve installing reference data, workflows and Miracum annotation data. In some situations you may also have to install additional tools, or update existing ones.</p>
+<h4 id="reference-data">Reference data</h4>
+<p>The analyses carried out on your server will require human reference genome data from various sources. Galaxy offers special tools called data managers, which are only accessible to admin users, that can be used to pull this data and make it available to regular users. Your first setup task will be to run several of the data managers through Galaxy's graphical user interface, and our page on Installation of reference data guides you through this process.</p>
+<p>Note: Just how many different data managers you will have to run depends on how you started your container. By starting it in --privileged mode you will enjoy automounting of some of the required reference data from the Galaxy project's CVMFS servers as explained in the Galaxy docker image usage instructions.</p>
+<h4 id="on-demand-reference-data-with-cvmfs">On-demand reference data with CVMFS</h4>
+<p>By default, Galaxy instances launched with this image will have on-demand access to approximately 3TB of reference genomes and indexes. These are the same reference data available on the main Galaxy server. This is achieved by connecting to Galaxy's CernVM filesystem (CVMFS) at data.galaxyproject.org repository, which is geographically distributed among numerous servers. The CVMFS capability doesn't add to the size of the Docker image, but when running, CVMFS maintains a cache to keep the most recently used data on the local disk.</p>
+<p>Note: for CVMFS directories to be mounted-on-demand with autofs, you must launch Docker as --privileged.</p>
+<p>On-demand reference data with CVMFS [toc]
+By default, Galaxy instances launched with this image will have on-demand access to approximately 3TB of reference genomes and indexes. These are the same reference data available on the main Galaxy server. This is achieved by connecting to Galaxy's CernVM filesystem (CVMFS) at data.galaxyproject.org repository, which is geographically distributed among numerous servers. The CVMFS capability doesn't add to the size of the Docker image, but when running, CVMFS maintains a cache to keep the most recently used data on the local disk.</p>
+<p>Note: for CVMFS directories to be mounted-on-demand with autofs, you must launch Docker as --privileged</p>
+<pre><code class="language-bash">docker run -d --privileged -p 8080:80 -p 8021:21 -p 8022:22 -v /home/ubuntu/galaxy_storage/:/export/ quay.io/bgruening/galaxy-exome-seq:miracum_20.09
+</code></pre>
+<p>For instructions of reference data installation follow the steps found here: <a href="https://github.com/AG-Boerries/MIRACUM-Pipe-Galaxy/blob/master/ref_data/README.md">https://github.com/AG-Boerries/MIRACUM-Pipe-Galaxy/blob/master/ref_data/README.md</a></p>
+<h3 id="installation-der-referenzdaten">Installation der Referenzdaten</h3>
+<p><strong>Die hier beschriebenen Schritte können nur über einen Galaxy-Admin account
+durchgeführt werden!</strong></p>
+<p>Das empfohlene <code>quay.io/bgruening/galaxy-exome-seq:miracum_20.09</code> Image
+bringt ein vorkonfiguriertes Admin-Konto mit:</p>
+<pre><code class="language-bash">Galaxy-Nutzername: admin
+Passwort: password
+</code></pre>
+<p>Mit diesen Zugangsdaten kann man sich im Galaxy-Webinterface, erreichbar unter
+<a href="http://localhost:8080">http://localhost:8080</a>, unter <code>Login or Register</code> -&gt; <code>Login</code> als
+Admin-Nutzer anmelden.</p>
+<p>Nach erfolgreicher Anmeldung sollte im Reiter ganz oben auf der Seite die
+Auswahl <code>Admin</code> zur Verfügung stehen. Diese bitte anklicken um eine
+Admin-Ansicht aufzurufen, von der aus alle im folgenden beschriebenen Schritte
+ausgeführt werden.
+Über die grafische Oberfläche sollen dabei Humangenom-Referenzdaten aus
+verschiedenen Quellen bezogen und als lokale Datenquellen in die Galaxy-Instanz
+integriert werden. Wichtig ist dabei, dass beim Start des Containers ein
+ausserhalb des Containers liegendes <code>/export</code>-Verzeichnis eingebunden wurde,
+damit diese lokalen Daten Container-übergreifend persistent gespeichert werden.</p>
+<ul>
+<li>Im Admin-Panel <code>Server</code> -&gt; <code>Local Data</code> auswählen</li>
+</ul>
+<p>Im zentralen Bereich der Seite werden jetzt die im Image vorinstallierten
+  Galaxy Data Manager angezeigt. Das sind spezialisierte Tools, die jeweils
+  ganz bestimmte Referenzdaten beziehen und in Galaxy verfügbar machen können.
+  Damit stehen diese Referenzdaten dann regulären Nutzern bei der Ausführung
+  von Tools und Workflows zur Verfügung.</p>
+<p>Die im weiteren angegebene Reihenfolge der Installationen braucht nicht
+  strikt eingehalten zu werden. Auch die parallele Installation von
+  Referenzdaten ist möglich. Einzig <strong>wichtige Ausnahme</strong>: die Installation
+  der beiden humanen Referenzgenom-Versionen über den Data Manager
+  <code>Create DBKey and Reference Genome</code> muss erfolgreich abgeschlossen sein,
+  bevor die zugehörigen Indizes über die Data Manager <code>SAM FASTA index</code> und
+  <code>BWA-MEM index</code> erstellt werden können!</p>
+<ul>
+<li>Installation der GEMINI-Annotationsdaten (data manager: <code>GEMINI Download</code>)</li>
+</ul>
+<p>Folgende Auswahlen überprüfen:</p>
+<ul>
+<li>
+<p><em>Download CADD scores for GEMINI database annotation</em>: <code>Yes</code></p>
+</li>
+<li>
+<p><em>Download GERP for GEMINI database annotation</em>: <code>Yes</code></p>
+</li>
+</ul>
+<p>Die Installation mittels <em>Execute</em> starten
+  (Achtung: der damit verbundene Download ist mit &gt;50GB der mit Abstand
+  umfangreichste der gesamten Installation, der data manager wird also</p>
+<ul>
+<li>
+<p>i. d. Regel limitiert durch die Bereitstellungsrate - sehr lange laufen und
+    sollte nicht unterbrochen werden.
+    Weitere data manager können währenddessen aber problemlos genutzt werden.)</p>
+</li>
+<li>
+<p>Installation der SnpEff-Annotationsdaten (data manager: <code>SnpEff Download</code>)</p>
+</li>
+</ul>
+<p>Folgender Parameter muss konfiguriert werden:</p>
+<ul>
+<li><em>Snpff Genome Version Name (e.g. GRCh38.76)</em>: <code>GRCh37.75</code></li>
+</ul>
+<p>mit <em>Execute</em> starten</p>
+<p>-&gt; Für einen Galaxy-Container mit cvmfs-Anbindung (Container wurde mit
+<code>--privileged</code>-Option gestartet) ist die Installation von Referenzdaten damit
+abgeschlossen.</p>
+<p>Ohne cvmfs-Anbindung folgt:</p>
+<ul>
+<li>Installation des humanen Referenzgenoms Version hg19
+  (data manager: <code>Create DBKey and Reference Genome</code>)</li>
+</ul>
+<p><strong>Achtung</strong>: es werden <strong>zwei</strong> Varianten des hg19 Referenzgenoms benötigt,
+  d.h. der data manager muss 2x aufgerufen werden!</p>
+<ol>
+<li>
+<p>Lauf (installiert das hg19-Genom mit allen - auch partiellen - Contigs):</p>
+<ul>
+<li>
+<p><em>Use existing dbkey or create a new one.</em>: <code>Existing</code></p>
+</li>
+<li>
+<p><em>DBKEY to assign to data</em>: <code>Human Feb. 2009 (GRCh37/hg19) hg19</code></p>
+</li>
+<li>
+<p><em>Name of sequence</em>: <code>hg19 Full</code></p>
+</li>
+<li>
+<p><em>ID for sequence</em>: <code>hg19</code></p>
+</li>
+<li>
+<p><em>Choose the source for the reference genome</em>: <code>URL</code></p>
+</li>
+<li>
+<p><em>URLs</em>: <code>http://datacache.galaxyproject.org/indexes/hg19/seq/hg19full.fa</code></p>
+<p><strong>Achtung</strong>: der URL darf <em>keinen</em> Zeilenumbruch enthalten!</p>
+</li>
+<li>
+<p><em>Sort by chromosome name</em>: <code>As is</code></p>
+</li>
+</ul>
+<p>mit <em>Execute</em> starten</p>
+</li>
+<li>
+<p>Lauf (installiert das hg19-Genom mit nur den Standard-Chromosomsequenzen):</p>
+<ul>
+<li>
+<p><em>Use existing dbkey or create a new one.</em>: <code>Existing</code></p>
+</li>
+<li>
+<p><em>DBKEY to assign to data</em>: <code>Human Feb. 2009 (GRCh37/hg19) hg19</code></p>
+</li>
+<li>
+<p><em>Name of sequence</em>: <code>hg19 Canonical</code></p>
+</li>
+<li>
+<p><em>ID for sequence</em>: <code>hg19canon</code></p>
+</li>
+<li>
+<p><em>Choose the source for the reference genome</em>: <code>URL</code></p>
+</li>
+<li>
+<p><em>URLs</em>: <code>http://datacache.galaxyproject.org/indexes/hg19/seq/hg19canon.fa</code></p>
+<p><strong>Achtung</strong>: der URL darf <em>keinen</em> Zeilenumbruch enthalten!</p>
+</li>
+<li>
+<p><em>Sort by chromosome name</em>: <code>As is</code></p>
+</li>
+</ul>
+<p>mit <em>Execute</em> starten</p>
+</li>
+<li>
+<p>Indizes der beiden Humangenome installieren (data manager: <code>SAM FASTA index</code>, ebenfalls 2x laufen lassen!)</p>
+</li>
+<li>
+<p>Lauf:</p>
+<ul>
+<li>
+<p><em>Source FASTA Sequence</em>: <code>hg19 Full</code> (wenn das Genom nicht angeboten wird, bitte zuerst das humane Referenzgenom (s.o.) installieren)</p>
+</li>
+<li>
+<p><em>Name of sequence</em>: <code>hg19 Full</code></p>
+</li>
+<li>
+<p><em>ID for sequence</em>: <code>hg19</code></p>
+</li>
+</ul>
+<p>mit <em>Execute</em> starten</p>
+</li>
+<li>
+<p>Lauf:</p>
+<ul>
+<li>
+<p><em>Source FASTA Sequenc</em>e: <code>hg19 Canonical</code> (wenn das Genom nicht angeboten wird, bitte zuerst das humane Referenzgenom (s.o.) installieren)</p>
+</li>
+<li>
+<p><em>Name of sequence</em>: <code>hg19 Canonical</code></p>
+</li>
+<li>
+<p><em>ID for sequence</em>: <code>hg19canon</code></p>
+</li>
+</ul>
+<p>mit <em>Execute</em> starten</p>
+</li>
+<li>
+<p>BWA-MEM-Index des Humangenoms generieren und installieren (data manager: <code>BWA-MEM index</code>)</p>
+</li>
+<li>
+<p><em>Source FASTA Sequence</em>: <code>hg19 Full</code> (wenn kein Genom angeboten wird, bitte zuerst das humane Referenzgenom (s.o.) installieren)</p>
+</li>
+<li>
+<p><em>Name of sequence</em>: <code>hg19 Full</code></p>
+</li>
+<li>
+<p><em>ID for sequence</em>: <code>hg19</code></p>
+</li>
+<li>
+<p><em>Algorithm for constructing BWT index</em>: <code>Guess automatically (2GB cut-off)</code></p>
+</li>
+</ol>
+<p>mit <em>Execute</em> starten</p>
+<h3 id="workflows">Workflows</h3>
+<p>To use these workflows, import the files into any Galaxy instance that has all required tools installed (see Tools section below), and make the workflows available to all users by publishing them on the instance.</p>
+<h4 id="adding-the-miracum-workflows-to-the-server">Adding the Miracum workflows to the server</h4>
+<p>The following instructions can be followed from a Galaxy admin or a regular user account. The user performing this, however, will be responsible for providing the workflows governing all future analysis runs on the server.</p>
+<p>To import the latest versions of all workflows intended for regular users,</p>
+<ol>
+<li>
+<p>Go to Workflows in the top menu of the Galaxy web interface</p>
+</li>
+<li>
+<p>Click the Import button at the top-right of the central part of the screen.</p>
+</li>
+<li>
+<p>Under Archived Workflow URL provide the link to the first workflow of this repository:</p>
+</li>
+</ol>
+<pre><code class="language-bash">https://github.com/AG-Boerries/MIRACUM-Pipe-Galaxy/raw/master/workflows/Galaxy-Workflow-MIRACUM_WES_complete.ga
+</code></pre>
+<p>Repeat steps 2 and 3 with the following additional URLs:</p>
+<pre><code class="language-bash">https://github.com/AG-Boerries/MIRACUM-Pipe-Galaxy/raw/master/workflows/Galaxy-Workflow-MIRACUM_panel_complete.ga
+
+https://github.com/AG-Boerries/MIRACUM-Pipe-Galaxy/raw/master/workflows/Galaxy-Workflow-MIRACUM_merge-per_lane_fastq_data.ga
+</code></pre>
+<p>Publish all imported workflows on the Galaxy server to make them accessible to all users:</p>
+<ol>
+<li>Click the "arrow-down" icon next to each workflow's name to expand its select menu and choose Share</li>
+<li>On the workflow sharing page, select Make Workflow Accessible and Publish</li>
+</ol>
+<p>Registered users can now find these workflows by selecting Shared Data -&gt; Workflows from Galaxy's top menu. This brings up a complete list of published workflows on your server, from which users can directly run any workflow by selecting the "arrow-down" expanding menu next to the workflow's name.</p>
+<p>Please note that directly running the shared workflows is strongly preferable over importing them first into a user's personal workflow list. Importing would create a user-specific copy of the workflow, which would get out-of-sync with the latest available version over time as workflow updates become available.</p>
+<p>=&gt; Running shared workflows directly from the Published Workflows list ensures that all users are always using the latest version of any workflow.</p>
+<h3 id="annotation-data">Annotation data</h3>
+<p>In order to run the Miracum analysis workflows users will also need Miracum-specific variants and gene annotation data. Similar to workflows, you can make this data available to all users on a server through a shared history. The process of doing so is detailed here <a href="https://github.com/AG-Boerries/MIRACUM-Pipe-Galaxy/blob/master/annotation_data/README.md">https://github.com/AG-Boerries/MIRACUM-Pipe-Galaxy/blob/master/annotation_data/README.md</a></p>
+<p>Users will start each analysis from a copy of the shared annotation data history, or by copying the Miracum annotation data collection from that history into a new history of their own.</p>
+<h4 id="prepare-the-variantsgene-annotation-data-for-the-miracum-galaxy-workflows">Prepare the variants/gene annotation data for the Miracum Galaxy workflows</h4>
+<p>The following instructions can be followed from a Galaxy admin or a regular
+user account. The user performing this, however, will be responsible for
+providing the annotation data used by all runs of the Miracum analysis
+workflows.</p>
+<ol>
+<li>Create a new empty history and give it a suitable name</li>
+</ol>
+<p><em>Miracum annotation data</em> could be such a name.</p>
+<ol>
+<li>
+<p>Upload the current version of the annotation data</p>
+</li>
+<li>
+<p>Open the Galaxy Upload Manager (by clicking the upload icon on the
+     top-right of the tool panel)</p>
+</li>
+<li>
+<p>In the <code>Download from web or upload from disk</code> dialogue window,
+     select the <code>Collection</code> tab, then <code>Paste/Fetch data</code>.</p>
+</li>
+<li>
+<p>Copy the following links into the text box under
+     <code>Download data from the web by entering URLs (one per line) or directly paste content.</code>:</p>
+<p><code>bash
+ https://usegalaxy.eu/datasets/11ac94870d0bb33af8a0b58436090b1f/display?to_ext=data&amp;hdca_id=32acb0c597889ace&amp;element_identifier=dbSNP.tidy
+ https://usegalaxy.eu/datasets/11ac94870d0bb33aae6dafccda2f98ce/display?to_ext=data&amp;hdca_id=32acb0c597889ace&amp;element_identifier=hotspots.data
+ https://usegalaxy.eu/datasets/11ac94870d0bb33a3db9ccac021aab7f/display?to_ext=data&amp;hdca_id=32acb0c597889ace&amp;element_identifier=civic.variants
+ https://usegalaxy.eu/datasets/11ac94870d0bb33ab81bfc56727e2942/display?to_ext=data&amp;hdca_id=32acb0c597889ace&amp;element_identifier=cgi.variants
+ https://usegalaxy.eu/datasets/11ac94870d0bb33a11fcc194ba0ac3c9/display?to_ext=data&amp;hdca_id=32acb0c597889ace&amp;element_identifier=uniprot_cancer.genes
+ https://usegalaxy.eu/datasets/11ac94870d0bb33a075823877241b126/display?to_ext=data&amp;hdca_id=32acb0c597889ace&amp;element_identifier=civic.genes
+ https://usegalaxy.eu/datasets/11ac94870d0bb33aaba0d2b1d7be95e2/display?to_ext=data&amp;hdca_id=32acb0c597889ace&amp;element_identifier=cgi.genes
+ https://usegalaxy.eu/datasets/11ac94870d0bb33a239a2350da3ca8b2/display?to_ext=data&amp;hdca_id=32acb0c597889ace&amp;element_identifier=annotation.metadata</code></p>
+</li>
+<li>
+<p>Click <code>Start</code></p>
+</li>
+<li>
+<p>Arrange datasets into the format expected by the Miracum analysis workflows</p>
+</li>
+<li>
+<p>While your datasets are getting uploaded, click the now available
+     <code>Build</code> in the upload manager dialogue (if you have closed the dialogue
+     window, simply reopen it by clicking on the Upload icon again).</p>
+</li>
+<li>
+<p>In the ensuing <code>Create a collection from a list of datasets</code> dialogue
+     provide a name for the new collection, e.g. <em>Uploaded data</em>, then click
+     <code>Create list</code>.</p>
+<p>All datasets should now be gathered into a single collection in your
+ history.</p>
+</li>
+<li>
+<p>Wait for the upload jobs to finish</p>
+<p>It can take approx. 30 minutes until all data is uploaded.</p>
+<p>You can check the status of the uploads by clicking on the newly created
+ collection in your history, which will reveal its contained datasets.</p>
+<p>While an upload job is running the corresponding dataset will be shown in
+ yellow. A dataset's color will change to green, when its upload is
+ complete. If a dataset turns red instead, this indicates an error during
+ the data upload.</p>
+<p>Please note, however, that the status of your uploads inside the
+ collection will not be updated automatically. Instead you'll have to click
+ the <code>Refresh history</code> icon at the top of the history panel (and then
+ navigate back into the collection) to see the current status.</p>
+</li>
+</ol>
+<p><strong>While you're waiting you can already continue with installing a helper
+   workflow</strong> that you will use to restructure the downloaded annotation data
+   into the format expected by the analytical workflows.</p>
+<ul>
+<li>
+<p>Select <code>Workflow</code> from the top menu of your Galaxy</p>
+</li>
+<li>
+<p>Find the <code>Import</code> button at the top-right of the page</p>
+</li>
+<li>
+<p>Under <code>Archived Workflow URL</code> enter the URL:
+     <code>https://github.com/AG-Boerries/MIRACUM-Pipe-Galaxy/raw/master/workflows/Galaxy-Workflow-MIRACUM_prepare_annotation_data.ga</code></p>
+</li>
+<li>
+<p>Click <code>Import workflow</code></p>
+</li>
+</ul>
+<p>Once the annotation data upload is complete you can run the helper workflow.</p>
+<ul>
+<li>
+<p>Find the <code>MIRACUM - Prepare annotation data</code> workflow in the list of
+     available workflows and click the <code>Run Workflow</code> icon (at the very right
+     of the workflow record).</p>
+</li>
+<li>
+<p>Select the collection you just built as the
+     <code>Downloaded annotation data as collection</code> and click <code>Run Workflow</code>.</p>
+<p>If the collection is not offered in the select menu, then either the
+ uploads of its contained datasets are not complete yet, or there has been
+ an error with at least one of the uploads.</p>
+<p>In the first case you just have to wait for the uploads to complete before
+ trying to run the workflow. In the second case, the simplest solution is
+ to discard the collection and start over.</p>
+</li>
+<li>
+<p>Make the annotation data available to all users</p>
+</li>
+<li>
+<p>Select <code>History options</code> (the gearwheel icon at the top of the history
+     panel), then <code>Share or Publish</code> under <code>History Actions</code></p>
+<p>This will take you to the <code>Share or Publish History</code> page of your Galaxy.</p>
+</li>
+<li>
+<p>You want to select <code>Make History Accessible and Publish</code>, but <strong>before</strong>
+     you do, you need to click the
+     <code>Also make all objects within the History accessible.</code> checkbox (or
+     other users would be able to see the history, but would not be able to use
+     any of its datasets).</p>
+</li>
+</ul>
+<p>The helper workflow for structuring the annotation data is <em>not</em> required
+   for your users so you do not need to share it.</p>
+<p><strong>Congratulations!</strong>
+The Miracum annotation data should now be accessible to every registered user
+on your Galaxy server.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../MAF/" class="btn btn-neutral float-right" title="MAF">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Docker/" class="btn btn-neutral" title="Docker"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../Docker/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../MAF/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
